@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<tryton>
+    <data>
+
+#
+# Tax Code Templates
+#
+        <record model="account.tax.code.template"
+            id="tax_code_be">
+            <field name="name">Argentinian Tax Code Chart</field>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="vat_code_chart_root">
+            <field name="name">Impuestos de Argentina</field>
+            <field name="parent" eval="False"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="vat_code_iva">
+            <field name="name">IVA</field>
+            <field name="parent" ref="vat_code_chart_root"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="vat_code_iva_venta21">
+            <field name="name">IVA Ventas 21</field>
+            <field name="code">01</field>
+            <field name="parent" ref="vat_code_iva"/>
+            <field name="account" ref="root"/>
+        </record>
+
+#
+# Tax Template
+#
+        <record model="account.tax.template"
+            id="vat_21_ventas">
+            <field name="name">IVA Ventas 21%</field>
+            <field name="description">IVA Asociado a ventas - 21%</field>
+            <field name="percentage" eval="Decimal('21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="iva_a_pagar"/>
+            <field name="credit_note_account" ref="iva_a_pagar"/>
+            <field name="invoice_base_code" ref="vat_code_iva_venta21"/>
+            <field name="credit_note_base_code" ref="vat_code_iva_venta21"/>
+            <field name="credit_note_base_sign" eval="-1"/>
+            <field name="account" ref="root"/>
+        </record>
+
+    </data>
+</tryton>
