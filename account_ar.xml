@@ -617,7 +617,7 @@ this repository contains the full copyright notices and license terms. -->
         <record model="account.account.template" id="a_sale">
             <field name="name">Ingresos por ventas</field>
             <field name="code">41100</field>
-            <field name="kind">other</field>
+            <field name="kind">revenue</field>
             <field name="type" ref="account_type_ingreso"/>
             <field name="parent" ref="ventas"/>
         </record>
