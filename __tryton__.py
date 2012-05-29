@@ -4,9 +4,9 @@
     'name': 'Account Argentina',
     'name_es_AR': 'Plan de cuentas Argentino Demo',
     'name_es_ES': 'Plan de cuentas Argentino Demo',
-    'version': '2.0.1',
+    'version': '2.4.0',
     'author': 'Thymbra - Torre de Hanoi',
-    'email': 'bvillasanti@thymbra.com',
+    'email': 'info@thymbra.com',
     'website': 'http://www.thymbra.com/',
     'description': '''Define an account chart template for Argentina.
 Usefull to create a Argentinian account chart with the wizard in
