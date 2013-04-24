@@ -9,7 +9,7 @@ the full copyright notices and license terms. -->
 # Tax Code Templates
 #
         <record model="account.tax.code.template"
-            id="tax_code_be">
+            id="tax_code_ar">
             <field name="name">Argentinian Tax Code Chart</field>
             <field name="account" ref="root"/>
         </record>
@@ -17,7 +17,7 @@ the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="vat_code_chart_root">
             <field name="name">Impuestos de Argentina</field>
-            <field name="parent" eval="False"/>
+            <field name="parent" ref="tax_code_ar"/>
             <field name="account" ref="root"/>
         </record>
 
