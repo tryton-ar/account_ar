@@ -45,8 +45,9 @@ setup(name='trytond_account_ar',
         'trytond.modules.account_ar',
     ],
     package_data={
-        'trytond.modules.account_ar': info.get('xml', []) \
-                + info.get('translation', []),
+        'trytond.modules.account_ar': (info.get('xml', []) \
+                + ['tryton.cfg', 'view/*xml', 'locale/*.po', '*.odt',
+                    'icons/*.svg']),
     },
     classifiers=[
         'Development Status :: 1 - Alpha',
