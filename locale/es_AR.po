@@ -1,0 +1,679 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.print_chart_account.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+#, fuzzy
+msgctxt "field:account.print_chart_account.start,id:"
+msgid "ID"
+msgstr "ID"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:a_expense"
+msgid "Gastos operativos general"
+msgstr "Gastos operativos general"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:a_pay"
+msgid "Proveedores"
+msgstr "Proveedores"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:a_recvfoo"
+msgid "Deudores por ventas"
+msgstr "Deudores por ventas"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:a_sale"
+msgid "Ingresos por ventas"
+msgstr "Ingresos por ventas"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:activo"
+msgid "ACTIVO"
+msgstr "ACTIVO"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:activo_corriente"
+msgid "ACTIVO CORRIENTE"
+msgstr "ACTIVO CORRIENTE"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:activo_no_corriente"
+msgid "ACTIVO NO CORRIENTE"
+msgstr "ACTIVO NO CORRIENTE"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:alquileres"
+msgid "Alquileres"
+msgstr "Alquileres"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:amortizacion_acumulada_bs_uso"
+msgid "AMORTIZACIONES ACUMULADAS BIENES DE USO"
+msgstr "AMORTIZACIONES ACUMULADAS BIENES DE USO"
+
+#, fuzzy
+msgctxt ""
+"model:account.account.template,name:amortizacion_acumulada_computacion"
+msgid "Amortización acumulada equipos computación"
+msgstr "Amortización acumulada equipos computación"
+
+#, fuzzy
+msgctxt ""
+"model:account.account.template,name:amortizacion_acumulada_instalaciones"
+msgid "Amortización acumulada instalaciones"
+msgstr "Amortización acumulada instalaciones"
+
+#, fuzzy
+msgctxt ""
+"model:account.account.template,name:amortizacion_acumulada_muebles_utiles"
+msgid "Amortización acumulada muebles y útiles"
+msgstr "Amortización acumulada muebles y útiles"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:amortizacion_acumulada_software"
+msgid "Amortización acumulada software"
+msgstr "Amortización acumulada software"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:amortizacion_muebles_y_utiles"
+msgid "Amortizacion muebles y útiles"
+msgstr "Amortizacion muebles y útiles"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:amortizacion_software"
+msgid "Amortizacion software"
+msgstr "Amortizacion software"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:amortizaciones"
+msgid "AMORTIZACIONES"
+msgstr "AMORTIZACIONES"
+
+#, fuzzy
+msgctxt ""
+"model:account.account.template,name:amortizaciones_equipos_computacion"
+msgid "Amortizaciones equipos de computación"
+msgstr "Amortizaciones equipos de computación"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:amortizaciones_instalaciones"
+msgid "Amortizaciones instalaciones"
+msgstr "Amortizaciones instalaciones"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:anticipo_impuestos_ganancias"
+msgid "Anticipo impuestos a las ganancias"
+msgstr "Anticipo impuestos a las ganancias"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:anticipos_de_clientes"
+msgid "Anticipos de clientes"
+msgstr "Anticipos de clientes"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:aporte_irrevocable"
+msgid "Aporte irrevocable"
+msgstr "Aporte irrevocable"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:articulos_libreria"
+msgid "Artículos librería"
+msgstr "Artículos librería"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:banco_misc"
+msgid "Banco misc"
+msgstr "Banco misc"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:beneficios_al_personal"
+msgid "Beneficios al personal"
+msgstr "Beneficios al personal"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:bienes_de_cambio"
+msgid "BIENES DE CAMBIO"
+msgstr "BIENES DE CAMBIO"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:bienes_de_uso"
+msgid "BIENES DE USO"
+msgstr "BIENES DE USO"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:cadeteria_y_correo"
+msgid "Cadetería y correo"
+msgstr "Cadetería y correo"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:caja_monex"
+msgid "Caja Monex"
+msgstr "Caja Monex"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:caja_pesos"
+msgid "Caja pesos"
+msgstr "Caja pesos"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:capital"
+msgid "Capital"
+msgstr "Capital"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:cargas_sociales"
+msgid "Cargas Sociales"
+msgstr "Cargas Sociales"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:cargas_sociales_a_pagar"
+msgid "Cargas sociales a pagar"
+msgstr "Cargas sociales a pagar"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:cargas_sociales_administrativas"
+msgid "Cargas sociales administrativas"
+msgstr "Cargas sociales administrativas"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:cargas_sociales_comerciales"
+msgid "Cargas sociales comerciales"
+msgstr "Cargas sociales comerciales"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:comisiones_comerciales"
+msgid "Comisiones"
+msgstr "Comisiones"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:costo_de_equipos"
+msgid "Costo de equipos"
+msgstr "Costo de equipos"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:creditos"
+msgid "CRÉDITOS"
+msgstr "CRÉDITOS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:deudas_comerciales"
+msgid "DEUDAS COMERCIALES"
+msgstr "DEUDAS COMERCIALES"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:deudas_comerciales_largo_plazo"
+msgid "DEUDAS COMERCIALES A LARGO PLAZO"
+msgstr "DEUDAS COMERCIALES A LARGO PLAZO"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:deudas_fiscales"
+msgid "DEUDAS FISCALES"
+msgstr "DEUDAS FISCALES"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:deudas_misc"
+msgid "Deudas misc"
+msgstr "Deudas misc"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:deudas_sociales"
+msgid "DEUDAS SOCIALES"
+msgstr "DEUDAS SOCIALES"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:deudores_morosos"
+msgid "Deudores morosos"
+msgstr "Deudores morosos"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:disponibilidades"
+msgid "DISPONIBILIDADES"
+msgstr "DISPONIBILIDADES"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:equipos"
+msgid "Equipos"
+msgstr "Equipos"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:equipos_de_computacion"
+msgid "Equipos computación"
+msgstr "Equipos computación"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:equipos_en_demo"
+msgid "Equipos en Demo"
+msgstr "Equipos en Demo"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:fondo_fijo"
+msgid "Fondo fijo"
+msgstr "Fondo fijo"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:gastos"
+msgid "GASTOS"
+msgstr "GASTOS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:gastos_comerciales"
+msgid "GASTOS COMERCIALES"
+msgstr "GASTOS COMERCIALES"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:gastos_de_administracion"
+msgid "GASTOS DE ADMINISTRACION"
+msgstr "GASTOS DE ADMINISTRACION"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:gastos_de_produccion"
+msgid "GASTOS DE PRODUCCION"
+msgstr "GASTOS DE PRODUCCION"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:gastos_fiscales"
+msgid "GASTOS FISCALES"
+msgstr "GASTOS FISCALES"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:gastos_no_operativos"
+msgid "GASTOS NO OPERATIVOS"
+msgstr "GASTOS NO OPERATIVOS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:gastos_operativos"
+msgid "GASTOS OPERATIVOS"
+msgstr "GASTOS OPERATIVOS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:haberes"
+msgid "Haberes"
+msgstr "Haberes"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:haberes_administrativos"
+msgid "Haberes administrativos"
+msgstr "Haberes administrativos"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:haberes_comerciales"
+msgid "Haberes comerciales"
+msgstr "Haberes comerciales"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:honorarios"
+msgid "Honorarios"
+msgstr "Honorarios"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:impuestos_a_las_ganancias"
+msgid "Impuestos a las ganancias"
+msgstr "Impuestos a las ganancias"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:impuestos_ingresos_brutos"
+msgid "Impuestos ingresos brutos"
+msgstr "Impuestos ingresos brutos"
+
+#, fuzzy
+msgctxt ""
+"model:account.account.template,name:impuestos_transacciones_bancarias"
+msgid "Impuestos transacciones bancarias"
+msgstr "Impuestos transacciones bancarias"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:ingresos"
+msgid "INGRESOS"
+msgstr "INGRESOS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:ingresos_brutos_a_pagar"
+msgid "Ingresos brutos a pagar"
+msgstr "Ingresos brutos a pagar"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:ingresos_financieros"
+msgid "INGRESOS FINANCIEROS"
+msgstr "INGRESOS FINANCIEROS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:ingresos_operativos"
+msgid "INGRESOS OPERATIVOS"
+msgstr "INGRESOS OPERATIVOS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:instalaciones"
+msgid "Instalaciones"
+msgstr "Instalaciones"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:intereses_y_recargos"
+msgid "Intereses y recargos"
+msgstr "Intereses y recargos"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:iva_a_pagar"
+msgid "IVA a pagar"
+msgstr "IVA a pagar"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:iva_credito_fiscal_10"
+msgid "IVA crédito fiscal 10.5 %"
+msgstr "IVA crédito fiscal 10.5 %"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:iva_credito_fiscal_21"
+msgid "IVA crédito fiscal 21%"
+msgstr "IVA crédito fiscal 21%"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:iva_debito_fiscal"
+msgid "IVA débito fiscal"
+msgstr "IVA débito fiscal"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:mantenimiento_y_limpieza"
+msgid "Mantenimiento y limpieza"
+msgstr "Mantenimiento y limpieza"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:materiales"
+msgid "Materiales"
+msgstr "Materiales"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:muebles_y_utiles"
+msgid "Muebles y útiles"
+msgstr "Muebles y útiles"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:otras_deudas"
+msgid "OTRAS DEUDAS"
+msgstr "OTRAS DEUDAS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:otros_creditos"
+msgid "OTROS CRÉDITOS"
+msgstr "OTROS CRÉDITOS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:otros_gastos"
+msgid "OTROS GASTOS"
+msgstr "OTROS GASTOS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:otros_ingresos"
+msgid "OTROS INGRESOS"
+msgstr "OTROS INGRESOS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:pasivo"
+msgid "PASIVO"
+msgstr "PASIVO"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:pasivo_corriente"
+msgid "PASIVO CORRIENTE"
+msgstr "PASIVO CORRIENTE"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:pasivo_no_corriente"
+msgid "PASIVO NO CORRIENTE"
+msgstr "PASIVO NO CORRIENTE"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:patrimonio_neto"
+msgid "PATRIMONIO NETO"
+msgstr "PATRIMONIO NETO"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:prevision_despidos"
+msgid "Previsión Despidos"
+msgstr "Previsión Despidos"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:proveedores_largo_plazo"
+msgid "Deudas proveedores a largo plazo"
+msgstr "Deudas proveedores a largo plazo"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:provision_gastos"
+msgid "Provision gastos"
+msgstr "Provision gastos"
+
+#, fuzzy
+msgctxt ""
+"model:account.account.template,name:provision_impuesto_a_las_ganancias"
+msgid "Provision impuesto a las ganancias"
+msgstr "Provision impuesto a las ganancias"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:provision_sac_a_pagar"
+msgid "Provision SAC a pagar"
+msgstr "Provision SAC a pagar"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:provision_sac_cargas_sociales"
+msgid "Provision SAC cargas sociales a pagar"
+msgstr "Provision SAC cargas sociales a pagar"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:provisiones_varias"
+msgid "PROVISIONES VARIAS"
+msgstr "PROVISIONES VARIAS"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:publicidad"
+msgid "Publicidad"
+msgstr "Publicidad"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:reserva_legal"
+msgid "Reserva legal"
+msgstr "Reserva legal"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:resultado_del_ejercicio"
+msgid "Resultado del ejercicio"
+msgstr "Resultado del ejercicio"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:resultado_invesiones_financieras"
+msgid "Resultado de inversiones financieras"
+msgstr "Resultado de inversiones financieras"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:resultados_no_asignados"
+msgid "Resultados no asignados"
+msgstr "Resultados no asignados"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:retencion_ganancias_a_depositar"
+msgid "Retención ganancias a depositar"
+msgstr "Retención ganancias a depositar"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:retencion_impuestos_ganancias"
+msgid "Retencion impuestos a las ganancias"
+msgstr "Retencion impuestos a las ganancias"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:retencion_ingresos_brutos"
+msgid "Retencion ingresos brutos"
+msgstr "Retencion ingresos brutos"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:retencion_iva"
+msgid "Retencion IVA"
+msgstr "Retencion IVA"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:root"
+msgid "Plan Contable Argentino"
+msgstr "Plan Contable Argentino"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:saldo_favorable_ing_ganancias"
+msgid "Saldo a favor ingresos a las ganancias"
+msgstr "Saldo a favor ingresos a las ganancias"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:seguros"
+msgid "Seguros"
+msgstr "Seguros"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:servicios_agua_luz_etc"
+msgid "Servicios de luz, agua, etc"
+msgstr "Servicios de luz, agua, etc"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:software"
+msgid "Software"
+msgstr "Software"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:sueldos_a_pagar"
+msgid "Sueldos a pagar"
+msgstr "Sueldos a pagar"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:valores_a_depositar"
+msgid "Valores a depositar"
+msgstr "Valores a depositar"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:venta_de_equipos"
+msgid "Venta de equipos"
+msgstr "Venta de equipos"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:venta_de_servicios_misc"
+msgid "Venta servicios misc"
+msgstr "Venta servicios misc"
+
+#, fuzzy
+msgctxt "model:account.account.template,name:ventas"
+msgid "VENTAS"
+msgstr "VENTAS"
+
+#, fuzzy
+msgctxt "model:account.account.type.template,name:account_type_activo"
+msgid "Activo"
+msgstr "Activo"
+
+#, fuzzy
+msgctxt "model:account.account.type.template,name:account_type_egreso"
+msgid "Egreso"
+msgstr "Egreso"
+
+#, fuzzy
+msgctxt "model:account.account.type.template,name:account_type_ingreso"
+msgid "Ingreso"
+msgstr "Ingreso"
+
+#, fuzzy
+msgctxt "model:account.account.type.template,name:account_type_pasivo"
+msgid "Pasivo"
+msgstr "Pasivo"
+
+#, fuzzy
+msgctxt "model:account.account.type.template,name:account_type_patrimonio"
+msgid "Patrimonio Neto"
+msgstr "Patrimonio Neto"
+
+#, fuzzy
+msgctxt "model:account.account.type.template,name:ar"
+msgid "Argentinian Account Type Chart"
+msgstr "Argentinian Account Type Chart"
+
+msgctxt "model:account.print_chart_account.start,name:"
+msgid "Print Chart Account"
+msgstr "Imprimir plan de cuentas"
+
+#, fuzzy
+msgctxt "model:account.tax.code.template,name:tax_code_ar"
+msgid "Argentinian Tax Code Chart"
+msgstr "Argentinian Tax Code Chart"
+
+#, fuzzy
+msgctxt "model:account.tax.code.template,name:vat_code_chart_root"
+msgid "Impuestos de Argentina"
+msgstr "Impuestos de Argentina"
+
+#, fuzzy
+msgctxt "model:account.tax.code.template,name:vat_code_iva"
+msgid "IVA"
+msgstr "IVA"
+
+#, fuzzy
+msgctxt "model:account.tax.code.template,name:vat_code_iva_venta21"
+msgid "IVA Ventas 21"
+msgstr "IVA Ventas 21"
+
+#, fuzzy
+msgctxt "model:account.tax.template,description:vat_21_ventas"
+msgid "IVA Asociado a ventas - 21%"
+msgstr "IVA Asociado a ventas - 21%"
+
+#, fuzzy
+msgctxt "model:account.tax.template,name:vat_21_ventas"
+msgid "IVA Ventas 21%"
+msgstr "IVA Ventas 21%"
+
+msgctxt "model:ir.action,name:report_chart_account"
+msgid "Chart Account"
+msgstr "Plan de cuentas"
+
+msgctxt "model:ir.action,name:wizard_print_chart_account"
+msgid "Print Chart Account"
+msgstr "Imprimir plan de cuentas"
+
+msgctxt "model:ir.ui.menu,name:menu_print_chart_account"
+msgid "Print Chart Account"
+msgstr "Imprimir plan de cuentas"
+
+msgctxt "odt:account.chart_account:"
+msgid "/"
+msgstr "/"
+
+msgctxt "odt:account.chart_account:"
+msgid "Account"
+msgstr "Cuenta"
+
+msgctxt "odt:account.chart_account:"
+msgid "Chart of Accounts"
+msgstr "Plan de cuentas"
+
+msgctxt "odt:account.chart_account:"
+msgid "Company:"
+msgstr "Empresa:"
+
+msgctxt "odt:account.chart_account:"
+msgid "Print Date:"
+msgstr "Fecha impresión:"
+
+msgctxt "odt:account.chart_account:"
+msgid "User:"
+msgstr "Usuario:"
+
+msgctxt "odt:account.chart_account:"
+msgid "at"
+msgstr "a las"
+
+msgctxt "view:account.print_chart_account.start:"
+msgid "Print Chart of Accounts"
+msgstr "Imprimir plan de cuentas"
+
+msgctxt "wizard_button:account.print_chart_account,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.print_chart_account,start,print_:"
+msgid "Print"
+msgstr "Imprimir"
