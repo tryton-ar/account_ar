@@ -53,7 +53,7 @@ the full copyright notices and license terms. -->
             id="vat_21_ventas">
             <field name="name">IVA Ventas 21%</field>
             <field name="description">IVA Asociado a ventas - 21%</field>
-            <field name="percentage" eval="Decimal('21')"/>
+            <field name="rate" eval="Decimal('0.21')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_a_pagar"/>
             <field name="credit_note_account" ref="iva_a_pagar"/>
