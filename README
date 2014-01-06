@@ -2,7 +2,6 @@ trytond_account_ar
 ==================
 
 The account_ar module of the Tryton application platform.
-See __tryton__.py
 
 Installing
 ----------
