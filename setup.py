@@ -26,7 +26,7 @@ minor_version = int(minor_version)
 #Third party (no tryton modules, required)
 requires = []
 for dep in info.get('depends', []):
-    if not re.match(r'(ir|res|workflow|webdav)(\W|$)', dep):
+    if not re.match(r'(ir|res|webdav)(\W|$)', dep):
         requires.append('trytond_%s >= %s.%s, < %s.%s' %
                 (dep, major_version, minor_version, major_version,
                     minor_version + 1))
