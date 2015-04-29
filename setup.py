@@ -31,13 +31,12 @@ for dep in info.get('depends', []):
 requires.append('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
 
-setup(name='trytond_account_ar',
+setup(name='trytonar_account_ar',
     version=info.get('version', '0.0.1'),
     description='Tryton module to add an account chart template for Argentina',
     long_description=read('README'),
-    author='Thymbra',
-    author_email='info@thymbra.com',
-    url='http://www.thymbra.com/',
+    author='tryton-ar',
+    url='https://bitbucket.org/thymbra/account_ar',
     package_dir={'trytond.modules.account_ar': '.'},
     packages=[
         'trytond.modules.account_ar',
@@ -48,7 +47,7 @@ setup(name='trytond_account_ar',
                 'icons/*.svg']),
         },
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 4 - Beta',
         'Environment :: Plugins',
         'Framework :: Tryton',
         'Intended Audience :: Developers',
@@ -58,7 +57,6 @@ setup(name='trytond_account_ar',
         'Natural Language :: English',
         'Natural Language :: Spanish',
         'Operating System :: OS Independent',
-        'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Topic :: Office/Business',
         'Topic :: Office/Business :: Financial :: Accounting',
