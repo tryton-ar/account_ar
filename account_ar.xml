@@ -160,6 +160,7 @@ the full copyright notices and license terms. -->
             <field name="kind">receivable</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="creditos"/>
+            <field name="party_required" eval="True"/>
         </record>
 
         <record model="account.account.template" id="deudores_morosos">
@@ -170,6 +171,7 @@ the full copyright notices and license terms. -->
             <field name="kind">receivable</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="creditos"/>
+            <field name="party_required" eval="True"/>
         </record>
 
         <record model="account.account.template" id="otros_creditos">
@@ -502,6 +504,7 @@ the full copyright notices and license terms. -->
             <field name="kind">payable</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_comerciales"/>
+            <field name="party_required" eval="True"/>
         </record>
 
         <record model="account.account.template" id="anticipos_de_clientes">
