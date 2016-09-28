@@ -185,7 +185,7 @@ the full copyright notices and license terms. -->
             <field name="name">Retencion impuestos a las ganancias</field>
             <field name="code">11401</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
@@ -194,7 +194,7 @@ the full copyright notices and license terms. -->
             <field name="name">Anticipo impuestos a las ganancias</field>
             <field name="code">11402</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
@@ -203,7 +203,7 @@ the full copyright notices and license terms. -->
             <field name="name">IVA crédito fiscal</field>
             <field name="code">11403</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
@@ -212,7 +212,7 @@ the full copyright notices and license terms. -->
             <field name="name">Retencion IVA</field>
             <field name="code">11405</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
@@ -221,7 +221,7 @@ the full copyright notices and license terms. -->
             <field name="name">Retencion ingresos brutos</field>
             <field name="code">11406</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
@@ -230,7 +230,7 @@ the full copyright notices and license terms. -->
             <field name="name">Saldo a favor ingresos a las ganancias</field>
             <field name="code">11407</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
@@ -246,7 +246,7 @@ the full copyright notices and license terms. -->
             <field name="name">Equipos</field>
             <field name="code">11501</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="bienes_de_cambio"/>
         </record>
@@ -255,7 +255,7 @@ the full copyright notices and license terms. -->
             <field name="name">Equipos en Demo</field>
             <field name="code">11502</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="bienes_de_cambio"/>
         </record>
@@ -378,7 +378,7 @@ the full copyright notices and license terms. -->
             <field name="name">Sueldos a pagar</field>
             <field name="code">21101</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
@@ -387,7 +387,7 @@ the full copyright notices and license terms. -->
             <field name="name">Cargas sociales a pagar</field>
             <field name="code">21102</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
@@ -396,7 +396,7 @@ the full copyright notices and license terms. -->
             <field name="name">Provision SAC a pagar</field>
             <field name="code">21103</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
@@ -405,7 +405,7 @@ the full copyright notices and license terms. -->
             <field name="name">Provision SAC cargas sociales a pagar</field>
             <field name="code">21104</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
@@ -414,7 +414,7 @@ the full copyright notices and license terms. -->
             <field name="name">Beneficios al personal</field>
             <field name="code">21105</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
@@ -423,7 +423,7 @@ the full copyright notices and license terms. -->
             <field name="name">Previsión Despidos</field>
             <field name="code">21106</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
@@ -439,7 +439,7 @@ the full copyright notices and license terms. -->
             <field name="name">Ingresos brutos a pagar</field>
             <field name="code">21201</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_fiscales"/>
         </record>
@@ -466,7 +466,7 @@ the full copyright notices and license terms. -->
             <field name="name">Retención ganancias a depositar</field>
             <field name="code">21204</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_fiscales"/>
         </record>
@@ -475,7 +475,7 @@ the full copyright notices and license terms. -->
             <field name="name">Provision impuesto a las ganancias</field>
             <field name="code">21205</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_fiscales"/>
         </record>
@@ -505,6 +505,7 @@ the full copyright notices and license terms. -->
             <field name="kind">payable</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_comerciales"/>
+            <field name="party_required" eval="True"/>
         </record>
 
         <record model="account.account.template" id="provisiones_varias">
@@ -518,7 +519,7 @@ the full copyright notices and license terms. -->
             <field name="name">Provision gastos</field>
             <field name="code">21401</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="pasivo_corriente"/>
         </record>
@@ -544,6 +545,7 @@ the full copyright notices and license terms. -->
             <field name="kind">payable</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="deudas_comerciales_largo_plazo"/>
+            <field name="party_required" eval="True"/>
         </record>
 
         <record model="account.account.template" id="otras_deudas">
@@ -557,7 +559,7 @@ the full copyright notices and license terms. -->
             <field name="name">Deudas misc</field>
             <field name="code">22201</field>
             <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
+            <field name="kind">other</field>
             <field name="type" ref="account_type_pasivo"/>
             <field name="parent" ref="otras_deudas"/>
         </record>
