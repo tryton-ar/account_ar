@@ -638,31 +638,31 @@ msgctxt "model:ir.ui.menu,name:menu_print_chart_account"
 msgid "Print Chart Account"
 msgstr "Imprimir plan de cuentas"
 
-msgctxt "odt:account.chart_account:"
+msgctxt "report:account.chart_account:"
 msgid "/"
 msgstr "/"
 
-msgctxt "odt:account.chart_account:"
+msgctxt "report:account.chart_account:"
 msgid "Account"
 msgstr "Cuenta"
 
-msgctxt "odt:account.chart_account:"
+msgctxt "report:account.chart_account:"
 msgid "Chart of Accounts"
 msgstr "Plan de cuentas"
 
-msgctxt "odt:account.chart_account:"
+msgctxt "report:account.chart_account:"
 msgid "Company:"
 msgstr "Empresa:"
 
-msgctxt "odt:account.chart_account:"
+msgctxt "report:account.chart_account:"
 msgid "Print Date:"
 msgstr "Fecha impresión:"
 
-msgctxt "odt:account.chart_account:"
+msgctxt "report:account.chart_account:"
 msgid "User:"
 msgstr "Usuario:"
 
-msgctxt "odt:account.chart_account:"
+msgctxt "report:account.chart_account:"
 msgid "at"
 msgstr "a las"
 
