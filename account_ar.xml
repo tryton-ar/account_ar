@@ -199,18 +199,9 @@ the full copyright notices and license terms. -->
             <field name="parent" ref="otros_creditos"/>
         </record>
 
-        <record model="account.account.template" id="iva_credito_fiscal_21">
-            <field name="name">IVA crédito fiscal 21%</field>
+        <record model="account.account.template" id="iva_credito_fiscal">
+            <field name="name">IVA crédito fiscal</field>
             <field name="code">11403</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
-            <field name="type" ref="account_type_activo"/>
-            <field name="parent" ref="otros_creditos"/>
-        </record>
-
-        <record model="account.account.template" id="iva_credito_fiscal_10">
-            <field name="name">IVA crédito fiscal 10.5 %</field>
-            <field name="code">11404</field>
             <field name="deferral" eval="True"/>
             <field name="kind">receivable</field>
             <field name="type" ref="account_type_activo"/>
