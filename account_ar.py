@@ -5,6 +5,7 @@ from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.report import Report
 from trytond.transaction import Transaction
+from datetime import datetime
 from trytond.pool import Pool
 
 __all__ = ['PrintChartAccountStart', 'PrintChartAccount', 'ChartAccount']
@@ -50,10 +51,11 @@ class ChartAccount(Report):
         return 1 + cls._compute_level(account.parent)
 
     @classmethod
-    def parse(cls, report, objects, data, localcontext):
+    def get_context(cls, records, data):
         pool = Pool()
         Account = pool.get('account.account')
         Company = pool.get('company.company')
+        report_context = super(ChartAccount, cls).get_context(records, data)
 
         company = Company(data['company'])
 
@@ -69,8 +71,7 @@ class ChartAccount(Report):
                     'level': cls._compute_level(account),
                     })
 
-        localcontext['accounts'] = report_accounts
-        localcontext['company'] = company
-
-        return super(ChartAccount, cls).parse(report, objects, data,
-            localcontext)
+        report_context['accounts'] = report_accounts
+        report_context['company'] = company
+        report_context['time'] = datetime.now()
+        return report_context
