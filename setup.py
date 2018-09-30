@@ -31,6 +31,8 @@ for dep in info.get('depends', []):
 requires.append('trytond >= %s.%s, < %s.%s' %
         (major_version, minor_version, major_version, minor_version + 1))
 
+tests_require = []
+
 setup(name='trytonar_account_ar',
     version=info.get('version', '0.0.1'),
     description='Tryton module to add an account chart template for Argentina',
@@ -40,6 +42,7 @@ setup(name='trytonar_account_ar',
     package_dir={'trytond.modules.account_ar': '.'},
     packages=[
         'trytond.modules.account_ar',
+        'trytond.modules.account_ar.tests',
         ],
     package_data={
         'trytond.modules.account_ar': (info.get('xml', [])
@@ -68,4 +71,7 @@ setup(name='trytonar_account_ar',
     [trytond.modules]
     account_ar = trytond.modules.account_ar
     """,
+    test_suite='tests',
+    test_loader='trytond.test_loader:Loader',
+    tests_require=tests_require,
     )
