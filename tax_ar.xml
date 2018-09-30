@@ -82,6 +82,14 @@ the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
+            id="vat_code_iva_venta0">
+            <field name="name">IVA Ventas 0</field>
+            <field name="code">07</field>
+            <field name="parent" ref="vat_code_iva"/>
+            <field name="account" ref="root"/>
+        </record>
+
+        <record model="account.tax.code.template"
             id="vat_code_iva_compra21">
             <field name="name">IVA Compras 21</field>
             <field name="code">04</field>
@@ -106,14 +114,6 @@ the full copyright notices and license terms. -->
         </record>
 
         <record model="account.tax.code.template"
-            id="vat_code_iva_venta0">
-            <field name="name">IVA Ventas 0</field>
-            <field name="code">07</field>
-            <field name="parent" ref="vat_code_iva"/>
-            <field name="account" ref="root"/>
-        </record>
-
-        <record model="account.tax.code.template"
             id="vat_code_iva_compra0">
             <field name="name">IVA Compras 0</field>
             <field name="code">08</field>
@@ -132,11 +132,24 @@ the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
-            <field name="invoice_base_code" ref="vat_code_iva_venta21"/>
-            <field name="credit_note_base_code" ref="vat_code_iva_venta21"/>
-            <field name="credit_note_base_sign" eval="-1"/>
             <field name="account" ref="root"/>
             <field name="group" ref="grupo_iva_venta"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_venta21-vat_21_ventas-invoice">
+            <field name="code" ref="vat_code_iva_venta21"/>
+            <field name="tax" ref="vat_21_ventas"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_venta21-vat_21_ventas-credit">
+            <field name="code" ref="vat_code_iva_venta21"/>
+            <field name="tax" ref="vat_21_ventas"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
         </record>
 
         <record model="account.tax.template"
@@ -147,11 +160,24 @@ the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
-            <field name="invoice_base_code" ref="vat_code_iva_venta105"/>
-            <field name="credit_note_base_code" ref="vat_code_iva_venta105"/>
-            <field name="credit_note_base_sign" eval="-1"/>
             <field name="account" ref="root"/>
             <field name="group" ref="grupo_iva_venta"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_venta105-vat_105_ventas-invoice">
+            <field name="code" ref="vat_code_iva_venta105"/>
+            <field name="tax" ref="vat_105_ventas"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_venta105-vat_105_ventas-credit">
+            <field name="code" ref="vat_code_iva_venta105"/>
+            <field name="tax" ref="vat_105_ventas"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
         </record>
 
         <record model="account.tax.template"
@@ -162,11 +188,24 @@ the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
-            <field name="invoice_base_code" ref="vat_code_iva_venta27"/>
-            <field name="credit_note_base_code" ref="vat_code_iva_venta27"/>
-            <field name="credit_note_base_sign" eval="-1"/>
             <field name="account" ref="root"/>
             <field name="group" ref="grupo_iva_venta"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_venta27-vat_27_ventas-invoice">
+            <field name="code" ref="vat_code_iva_venta27"/>
+            <field name="tax" ref="vat_27_ventas"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_venta27-vat_27_ventas-credit">
+            <field name="code" ref="vat_code_iva_venta27"/>
+            <field name="tax" ref="vat_27_ventas"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
         </record>
 
         <record model="account.tax.template"
@@ -177,11 +216,24 @@ the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
-            <field name="invoice_base_code" ref="vat_code_iva_venta0"/>
-            <field name="credit_note_base_code" ref="vat_code_iva_venta0"/>
-            <field name="credit_note_base_sign" eval="-1"/>
             <field name="account" ref="root"/>
             <field name="group" ref="grupo_iva_venta"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_venta0-vat_0_ventas-invoice">
+            <field name="code" ref="vat_code_iva_venta0"/>
+            <field name="tax" ref="vat_0_ventas"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_venta0-vat_0_ventas-credit">
+            <field name="code" ref="vat_code_iva_venta0"/>
+            <field name="tax" ref="vat_0_ventas"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
         </record>
 
         <record model="account.tax.template"
@@ -192,11 +244,24 @@ the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_credito_fiscal"/>
             <field name="credit_note_account" ref="iva_credito_fiscal"/>
-            <field name="invoice_base_code" ref="vat_code_iva_compra21"/>
-            <field name="credit_note_base_code" ref="vat_code_iva_compra21"/>
-            <field name="credit_note_base_sign" eval="-1"/>
             <field name="account" ref="root"/>
             <field name="group" ref="grupo_iva_compra"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_compra21-vat_21_compras-invoice">
+            <field name="code" ref="vat_code_iva_compra21"/>
+            <field name="tax" ref="vat_21_compras"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_compra21-vat_21_compras-credit">
+            <field name="code" ref="vat_code_iva_compra21"/>
+            <field name="tax" ref="vat_21_compras"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
         </record>
 
         <record model="account.tax.template"
@@ -207,11 +272,24 @@ the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_credito_fiscal"/>
             <field name="credit_note_account" ref="iva_credito_fiscal"/>
-            <field name="invoice_base_code" ref="vat_code_iva_compra105"/>
-            <field name="credit_note_base_code" ref="vat_code_iva_compra105"/>
-            <field name="credit_note_base_sign" eval="-1"/>
             <field name="account" ref="root"/>
             <field name="group" ref="grupo_iva_compra"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_compra105-vat_105_compras-invoice">
+            <field name="code" ref="vat_code_iva_compra105"/>
+            <field name="tax" ref="vat_105_compras"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_compra105-vat_105_compras-credit">
+            <field name="code" ref="vat_code_iva_compra105"/>
+            <field name="tax" ref="vat_105_compras"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
         </record>
 
         <record model="account.tax.template"
@@ -222,11 +300,24 @@ the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_credito_fiscal"/>
             <field name="credit_note_account" ref="iva_credito_fiscal"/>
-            <field name="invoice_base_code" ref="vat_code_iva_compra27"/>
-            <field name="credit_note_base_code" ref="vat_code_iva_compra27"/>
-            <field name="credit_note_base_sign" eval="-1"/>
             <field name="account" ref="root"/>
             <field name="group" ref="grupo_iva_compra"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_compra27-vat_27_compras-invoice">
+            <field name="code" ref="vat_code_iva_compra27"/>
+            <field name="tax" ref="vat_27_compras"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_compra27-vat_27_compras-credit">
+            <field name="code" ref="vat_code_iva_compra27"/>
+            <field name="tax" ref="vat_27_compras"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
         </record>
 
         <record model="account.tax.template"
@@ -237,11 +328,24 @@ the full copyright notices and license terms. -->
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_credito_fiscal"/>
             <field name="credit_note_account" ref="iva_credito_fiscal"/>
-            <field name="invoice_base_code" ref="vat_code_iva_compra0"/>
-            <field name="credit_note_base_code" ref="vat_code_iva_compra0"/>
-            <field name="credit_note_base_sign" eval="-1"/>
             <field name="account" ref="root"/>
             <field name="group" ref="grupo_iva_compra"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_compra0-vat_0_compras-invoice">
+            <field name="code" ref="vat_code_iva_compra0"/>
+            <field name="tax" ref="vat_0_compras"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="vat_code_iva_compra0-vat_0_compras-credit">
+            <field name="code" ref="vat_code_iva_compra0"/>
+            <field name="tax" ref="vat_0_compras"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
         </record>
 
     </data>
