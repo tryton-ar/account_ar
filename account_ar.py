@@ -1,11 +1,12 @@
-#This file is part of the account_ar module for Tryton.
-#The COPYRIGHT file at the top level of this repository contains
-#the full copyright notices and license terms.
+# This file is part of the account_ar module for Tryton.
+# The COPYRIGHT file at the top level of this repository contains
+# the full copyright notices and license terms.
+from datetime import datetime
+
 from trytond.model import ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.report import Report
 from trytond.transaction import Transaction
-from datetime import datetime
 from trytond.pool import Pool
 
 __all__ = ['PrintChartAccountStart', 'PrintChartAccount', 'ChartAccount']
