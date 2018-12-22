@@ -33,7 +33,7 @@ the full copyright notices and license terms. -->
 #
         <record model="account.tax.code.template"
             id="tax_code_ar">
-            <field name="name">Argentinian Tax Code Chart</field>
+            <field name="name">Códigos de impuestos</field>
             <field name="account" ref="root"/>
         </record>
 
