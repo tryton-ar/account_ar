@@ -60,7 +60,6 @@ the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="vat_code_iva_venta21">
             <field name="name">IVA Ventas 21</field>
-            <field name="code">01</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="root"/>
         </record>
@@ -68,7 +67,6 @@ the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="vat_code_iva_venta105">
             <field name="name">IVA Ventas 10.5</field>
-            <field name="code">02</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="root"/>
         </record>
@@ -76,7 +74,6 @@ the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="vat_code_iva_venta27">
             <field name="name">IVA Ventas 27</field>
-            <field name="code">03</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="root"/>
         </record>
@@ -84,7 +81,6 @@ the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="vat_code_iva_venta0">
             <field name="name">IVA Ventas 0</field>
-            <field name="code">07</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="root"/>
         </record>
@@ -92,7 +88,6 @@ the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="vat_code_iva_compra21">
             <field name="name">IVA Compras 21</field>
-            <field name="code">04</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="root"/>
         </record>
@@ -100,7 +95,6 @@ the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="vat_code_iva_compra105">
             <field name="name">IVA Compras 10.5</field>
-            <field name="code">05</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="root"/>
         </record>
@@ -108,7 +102,6 @@ the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="vat_code_iva_compra27">
             <field name="name">IVA Compras 27</field>
-            <field name="code">06</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="root"/>
         </record>
@@ -116,7 +109,6 @@ the full copyright notices and license terms. -->
         <record model="account.tax.code.template"
             id="vat_code_iva_compra0">
             <field name="name">IVA Compras 0</field>
-            <field name="code">08</field>
             <field name="parent" ref="vat_code_iva"/>
             <field name="account" ref="root"/>
         </record>
