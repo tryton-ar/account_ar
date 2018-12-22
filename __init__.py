@@ -3,16 +3,16 @@
 # the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from .account_ar import *
+from . import account_ar
 
 
 def register():
     Pool.register(
-        PrintChartAccountStart,
+        account_ar.PrintChartAccountStart,
         module='account_ar', type_='model')
     Pool.register(
-        PrintChartAccount,
+        account_ar.PrintChartAccount,
         module='account_ar', type_='wizard')
     Pool.register(
-        ChartAccount,
+        account_ar.ChartAccount,
         module='account_ar', type_='report')
