@@ -31,7 +31,7 @@ the full copyright notices and license terms. -->
 #
         <record model="account.account.type.template"
             id="ar">
-            <field name="name">Argentinian Account Type Chart</field>
+            <field name="name">Tipos de cuentas Argentina</field>
             <field name="sequence" eval="10"/>
         </record>
 
