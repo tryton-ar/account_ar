@@ -23,7 +23,7 @@ the full copyright notices and license terms. -->
             <field name="name">Chart Account</field>
             <field name="model"></field>
             <field name="report_name">account.chart_account</field>
-            <field name="report">account_ar/chart_account.odt</field>
+            <field name="report">account_ar/chart_account.fodt</field>
         </record>
 
 #
