@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<!-- This file is part of Tryton.  The COPYRIGHT file at the top level of
+this repository contains the full copyright notices and license terms. -->
+<data>
+    <xpath expr="/form/notebook" position="inside">
+        <page id="afip_code" string="AFIP Code">
+            <label name="iva_code"/>
+            <field name="iva_code"/>
+        </page>
+    </xpath>
+</data>

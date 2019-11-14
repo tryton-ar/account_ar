@@ -9,6 +9,9 @@ from . import account_ar
 def register():
     Pool.register(
         account_ar.PrintChartAccountStart,
+        account_ar.TaxTemplate,
+        account_ar.Tax,
+        account_ar.TaxGroup,
         module='account_ar', type_='model')
     Pool.register(
         account_ar.PrintChartAccount,
