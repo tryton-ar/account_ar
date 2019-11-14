@@ -4,6 +4,28 @@ The COPYRIGHT file at the top level of this repository contains
 the full copyright notices and license terms. -->
 <tryton>
     <data>
+        <record model="ir.ui.view" id="tax_template_view_form">
+            <field name="model">account.tax.template</field>
+            <field name="inherit" ref="account.tax_template_view_form"/>
+            <field name="name">tax_template_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_view_form">
+            <field name="model">account.tax</field>
+            <field name="inherit" ref="account.tax_view_form"/>
+            <field name="name">tax_form</field>
+        </record>
+
+        <record model="ir.ui.view" id="tax_group_view_form">
+            <field name="model">account.tax.group</field>
+            <field name="inherit" ref="account.tax_group_view_form"/>
+            <field name="name">tax_group_form</field>
+        </record>
+        <record model="ir.ui.view" id="tax_group_view_tree">
+            <field name="model">account.tax.group</field>
+            <field name="inherit" ref="account.tax_group_view_tree"/>
+            <field name="name">tax_group_tree</field>
+        </record>
 
         <record model="ir.ui.view" id="print_chart_account_start_view_form">
             <field name="model">account.print_chart_account.start</field>
@@ -216,6 +238,15 @@ the full copyright notices and license terms. -->
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
+        <record id="percepcion_iva" model="account.account.template">
+          <field name="name">Percepcion IVA</field>
+          <field name="code">11409</field>
+          <field eval="True" name="deferral" />
+          <field eval="False" name="reconcile" />
+          <field name="kind">other</field>
+          <field name="type" ref="account_type_activo" />
+          <field name="parent" ref="otros_creditos" />
+        </record>
 
         <record model="account.account.template" id="retencion_ingresos_brutos">
             <field name="name">Retencion ingresos brutos</field>
@@ -223,6 +254,15 @@ the full copyright notices and license terms. -->
             <field name="deferral" eval="True"/>
             <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
+            <field name="parent" ref="otros_creditos"/>
+        </record>
+        <record id="percepciones_ingresos_brutos" model="account.account.template">
+            <field name="name">Percepciones Ingresos Brutos</field>
+            <field name="code">11408</field>
+            <field eval="True" name="deferral" />
+            <field eval="False" name="reconcile" />
+            <field name="kind">other</field>
+            <field name="type" ref="account_type_activo" />
             <field name="parent" ref="otros_creditos"/>
         </record>
 
@@ -233,6 +273,15 @@ the full copyright notices and license terms. -->
             <field name="kind">other</field>
             <field name="type" ref="account_type_activo"/>
             <field name="parent" ref="otros_creditos"/>
+        </record>
+        <record id="saldo_favorable_iva" model="account.account.template">
+          <field name="name">Iva Saldo a Favor</field>
+          <field name="code">11410</field>
+          <field eval="True" name="deferral" />
+          <field eval="False" name="reconcile" />
+          <field name="kind">other</field>
+          <field name="type" ref="account_type_activo" />
+          <field name="parent" ref="otros_creditos" />
         </record>
 
         <record model="account.account.template" id="bienes_de_cambio">

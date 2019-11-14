@@ -3,13 +3,62 @@
 # the full copyright notices and license terms.
 from datetime import datetime
 
-from trytond.model import ModelView, fields
+from trytond.model import ModelSQL, ModelView, fields
 from trytond.wizard import Wizard, StateView, StateAction, Button
 from trytond.report import Report
 from trytond.transaction import Transaction
-from trytond.pool import Pool
+from trytond.pyson import Eval, Bool
+from trytond.pool import PoolMeta, Pool
 
-__all__ = ['PrintChartAccountStart', 'PrintChartAccount', 'ChartAccount']
+__all__ = ['PrintChartAccountStart', 'PrintChartAccount', 'ChartAccount',
+    'TaxTemplate', 'Tax', 'TaxGroup']
+
+AFIP_KINDS = [
+    ('gravado', 'Gravado'),
+    ('nacional', 'Nacional'),
+    ('provincial', 'Provincial'),
+    ('municipal', 'Municipal'),
+    ('interno', 'Interno'),
+    ('other', 'Other'),
+    ]
+
+
+class TaxGroup(metaclass=PoolMeta):
+    __name__ = 'account.tax.group'
+
+    tribute_id = fields.Char("Tribute ID", states={
+            'invisible': Eval('afip_kind') == 'gravado',
+            'required': Eval('afip_kind') != 'gravado',
+            })
+    afip_kind = fields.Selection(AFIP_KINDS, 'AFIP Kind', required=True)
+
+
+class TaxTemplate(metaclass=PoolMeta):
+    __name__ = 'account.tax.template'
+
+    iva_code = fields.Char("IVA Code")
+
+    def _get_tax_value(self, tax=None):
+        value = super(TaxTemplate, self)._get_tax_value(tax=tax)
+        if not tax or tax.iva_code != self.iva_code:
+            value['iva_code'] = self.iva_code
+        return value
+
+
+class Tax(metaclass=PoolMeta):
+    __name__ = 'account.tax'
+
+    iva_code = fields.Char("IVA Code",
+        states={
+            'readonly': (Bool(Eval('template', -1))
+                & ~Eval('template_override', False)),
+            },
+        depends=['template', 'template_override'])
+
+    @classmethod
+    def __setup__(cls):
+        super(Tax, cls).__setup__()
+        cls.group.required = True
 
 
 class PrintChartAccountStart(ModelView):

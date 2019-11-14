@@ -6,5 +6,5 @@ include CHANGELOG
 include LICENSE
 include tryton.cfg
 include *.xml
-include *.odt
+include *.fodt
 include locale/*.po
