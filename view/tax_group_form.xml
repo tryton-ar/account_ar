@@ -5,5 +5,7 @@ this repository contains the full copyright notices and license terms. -->
     <xpath expr="/form/field[@name='kind']" position="after">
         <label name="afip_kind"/>
         <field name="afip_kind"/>
+        <label name="tribute_id"/>
+        <field name="tribute_id"/>
     </xpath>
 </data>
