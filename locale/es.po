@@ -1,3 +1,51 @@
 #
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.tax,iva_code:"
+msgid "IVA Code"
+msgstr "Código IVA"
+
+msgctxt "field:account.tax.group,afip_kind:"
+msgid "AFIP Kind"
+msgstr "Clase AFIP"
+
+msgctxt "field:account.tax.group,tribute_id:"
+msgid "Tribute ID"
+msgstr "ID Impuesto"
+
+msgctxt "field:account.tax.template,iva_code:"
+msgid "IVA Code"
+msgstr "Código IVA"
+
+msgctxt "selection:account.tax.group,afip_kind:"
+msgid "Gravado"
+msgstr "Gravado"
+
+msgctxt "selection:account.tax.group,afip_kind:"
+msgid "Interno"
+msgstr "Interno"
+
+msgctxt "selection:account.tax.group,afip_kind:"
+msgid "Municipal"
+msgstr "Municipal"
+
+msgctxt "selection:account.tax.group,afip_kind:"
+msgid "Nacional"
+msgstr "Nacional"
+
+msgctxt "selection:account.tax.group,afip_kind:"
+msgid "Other"
+msgstr "Otro"
+
+msgctxt "selection:account.tax.group,afip_kind:"
+msgid "Provincial"
+msgstr "Provincial"
+
+msgctxt "view:account.tax.template:"
+msgid "AFIP Code"
+msgstr "Código AFIP"
+
+msgctxt "view:account.tax:"
+msgid "AFIP Code"
+msgstr "Código AFIP"
