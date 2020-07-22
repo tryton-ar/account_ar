@@ -27,27 +27,6 @@ the full copyright notices and license terms. -->
             <field name="name">tax_group_tree</field>
         </record>
 
-        <record model="ir.ui.view" id="print_chart_account_start_view_form">
-            <field name="model">account.print_chart_account.start</field>
-            <field name="type">form</field>
-            <field name="name">print_chart_account_start_form</field>
-        </record>
-
-        <record model="ir.action.wizard" id="wizard_print_chart_account">
-            <field name="name">Print Chart Account</field>
-            <field name="wiz_name">account.print_chart_account</field>
-        </record>
-        <menuitem parent="account.menu_reporting"
-            action="wizard_print_chart_account" id="menu_print_chart_account"
-            icon="tryton-print"/>
-
-        <record model="ir.action.report" id="report_chart_account">
-            <field name="name">Chart Account</field>
-            <field name="model"></field>
-            <field name="report_name">account.chart_account</field>
-            <field name="report">account_ar/chart_account.fodt</field>
-        </record>
-
 #
 # Account Types
 #

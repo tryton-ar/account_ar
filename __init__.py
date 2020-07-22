@@ -8,14 +8,7 @@ from . import account_ar
 
 def register():
     Pool.register(
-        account_ar.PrintChartAccountStart,
         account_ar.TaxTemplate,
         account_ar.Tax,
         account_ar.TaxGroup,
         module='account_ar', type_='model')
-    Pool.register(
-        account_ar.PrintChartAccount,
-        module='account_ar', type_='wizard')
-    Pool.register(
-        account_ar.ChartAccount,
-        module='account_ar', type_='report')
