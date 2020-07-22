@@ -7,7 +7,7 @@ import io
 import os
 import re
 from configparser import ConfigParser
-from setuptools import setup
+from setuptools import setup, find_packages
 
 MODULE2PREFIX = {}
 
@@ -31,7 +31,7 @@ def get_require_version(name):
 
 
 config = ConfigParser()
-config.read_file(open('tryton.cfg'))
+config.read_file(open(os.path.join(os.path.dirname(__file__), 'tryton.cfg')))
 info = dict(config.items('tryton'))
 for key in ('depends', 'extras_depend', 'xml'):
     if key in info:
@@ -44,6 +44,16 @@ name = 'trytonar_account_ar'
 
 download_url = 'https://github.com/tryton-ar/account_ar/tree/%s.%s' % (
     major_version, minor_version)
+if minor_version % 2:
+    version = '%s.%s.dev0' % (major_version, minor_version)
+    download_url = 'hg+http://hg.tryton.org/modules/%s#egg=%s-%s' % (
+        name[8:], name, version)
+local_version = []
+for build in ['CI_BUILD_NUMBER', 'CI_JOB_NUMBER', 'CI_JOB_ID']:
+    if os.environ.get(build):
+        local_version.append(os.environ[build])
+if local_version:
+    version += '+' + '.'.join(local_version)
 
 LINKS = {}
 
@@ -57,22 +67,31 @@ requires.append(get_require_version('trytond'))
 
 tests_require = [get_require_version('proteus')]
 dependency_links = list(LINKS.values())
+if minor_version % 2:
+    dependency_links.append('https://trydevpi.tryton.org/')
 
 setup(name=name,
     version=version,
-    description='Tryton module to add an account chart template for Argentina',
-    long_description=read('README'),
+    description='Tryton module for Argentinian accounting',
+    long_description=read('README.rst'),
     author='tryton-ar',
     url='https://github.com/tryton-ar/account_ar',
     download_url=download_url,
+    project_urls={
+        "Bug Tracker": 'https://bugs.tryton.org/',
+        "Documentation": 'https://docs.tryton.org/',
+        "Forum": 'https://www.tryton.org/forum',
+        "Source Code": 'https://github.com/tryton-ar/account_ar',
+        },
+    keywords='tryton account chart argentina',
     package_dir={'trytond.modules.account_ar': '.'},
-    packages=[
-        'trytond.modules.account_ar',
-        'trytond.modules.account_ar.tests',
-        ],
+    packages=(
+        ['trytond.modules.account_ar'] +
+        ['trytond.modules.account_ar.%s' % p for p in find_packages()]
+        ),
     package_data={
         'trytond.modules.account_ar': (info.get('xml', []) + [
-            'tryton.cfg', 'view/*.xml', 'locale/*.po', '*.fodt']),
+            'tryton.cfg', 'view/*.xml', 'locale/*.po']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',

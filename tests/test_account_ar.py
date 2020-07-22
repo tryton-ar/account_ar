@@ -6,13 +6,13 @@ from trytond.tests.test_tryton import ModuleTestCase
 from trytond.tests.test_tryton import suite as test_suite
 
 
-class AccountTestCase(ModuleTestCase):
-    'Test Account Ar module'
+class AccountARTestCase(ModuleTestCase):
+    'Test Account AR module'
     module = 'account_ar'
 
 
 def suite():
     suite = test_suite()
     suite.addTests(unittest.TestLoader().loadTestsFromTestCase(
-            AccountTestCase))
+            AccountARTestCase))
     return suite

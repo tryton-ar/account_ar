@@ -1,8 +1,5 @@
-Account Argentina Module
+Argentina Account Module
 ########################
 
-Define an account chart template for Argentina.
-
-Usefull to create a Argentinian account chart with the wizard in
-Financial Management > Configuration > General Account >
-Create Chart of Account from Template
+The account_ar module provides a chart of accounts and implements the accounting
+requirements for companies based in Argentina.
