@@ -6,18 +6,6 @@ from trytond.model import fields
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, Bool
 
-__all__ = ['TaxTemplate', 'Tax', 'TaxGroup']
-
-
-AFIP_KINDS = [
-    ('gravado', 'Gravado'),
-    ('nacional', 'Nacional'),
-    ('provincial', 'Provincial'),
-    ('municipal', 'Municipal'),
-    ('interno', 'Interno'),
-    ('other', 'Other'),
-    ]
-
 
 class TaxGroup(metaclass=PoolMeta):
     __name__ = 'account.tax.group'
@@ -26,7 +14,14 @@ class TaxGroup(metaclass=PoolMeta):
             'invisible': Eval('afip_kind') == 'gravado',
             'required': Eval('afip_kind') != 'gravado',
             })
-    afip_kind = fields.Selection(AFIP_KINDS, 'AFIP Kind', required=True)
+    afip_kind = fields.Selection([
+        ('gravado', 'Gravado'),
+        ('nacional', 'Nacional'),
+        ('provincial', 'Provincial'),
+        ('municipal', 'Municipal'),
+        ('interno', 'Interno'),
+        ('other', 'Other'),
+        ], 'AFIP Kind', required=True)
 
 
 class TaxTemplate(metaclass=PoolMeta):

@@ -4,152 +4,324 @@ The COPYRIGHT file at the top level of this repository contains
 the full copyright notices and license terms. -->
 <tryton>
     <data>
-        <record model="ir.ui.view" id="tax_template_view_form">
-            <field name="model">account.tax.template</field>
-            <field name="inherit" ref="account.tax_template_view_form"/>
-            <field name="name">tax_template_form</field>
-        </record>
-
-        <record model="ir.ui.view" id="tax_view_form">
-            <field name="model">account.tax</field>
-            <field name="inherit" ref="account.tax_view_form"/>
-            <field name="name">tax_form</field>
-        </record>
-
-        <record model="ir.ui.view" id="tax_group_view_form">
-            <field name="model">account.tax.group</field>
-            <field name="inherit" ref="account.tax_group_view_form"/>
-            <field name="name">tax_group_form</field>
-        </record>
-        <record model="ir.ui.view" id="tax_group_view_tree">
-            <field name="model">account.tax.group</field>
-            <field name="inherit" ref="account.tax_group_view_tree"/>
-            <field name="name">tax_group_tree</field>
-        </record>
-
-#
-# Account Types
-#
-        <record model="account.account.type.template"
-            id="ar">
+        <record model="account.account.type.template" id="account_type_template_root_ar">
             <field name="name">Tipos de cuentas Argentina</field>
             <field name="sequence" eval="10"/>
+            <field name="statement" eval="None"/>
         </record>
 
-        <record model="account.account.type.template"
-            id="account_type_activo">
+        <record id="account_type_template_activo_ar" model="account.account.type.template">
             <field name="name">Activo</field>
             <field name="sequence" eval="10"/>
-            <field name="parent" ref="ar"/>
+            <field name="parent" ref="account_type_template_root_ar"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+        </record>
+        <record id="account_type_template_activo_corriente_ar" model="account.account.type.template">
+            <field name="name">Corriente</field>
+            <field name="parent" ref="account_type_template_activo_ar"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_activo_corriente_disponibilidades_ar" model="account.account.type.template">
+            <field name="name">Disponibilidades</field>
+            <field name="parent" ref="account_type_template_activo_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_activo_corriente_creditos_ar" model="account.account.type.template">
+            <field name="name">Creditos</field>
+            <field name="parent" ref="account_type_template_activo_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="20"/>
+            <field name="receivable" eval="True"/>
+        </record>
+        <record id="account_type_template_activo_corriente_otros_creditos_ar" model="account.account.type.template">
+            <field name="name">Otros créditos</field>
+            <field name="parent" ref="account_type_template_activo_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="30"/>
+        </record>
+        <record id="account_type_template_activo_corriente_bienes_de_cambio_ar" model="account.account.type.template">
+            <field name="name">Bienes de cambio</field>
+            <field name="parent" ref="account_type_template_activo_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="40"/>
         </record>
 
-        <record model="account.account.type.template"
-            id="account_type_pasivo">
+        <record id="account_type_template_activo_no_corriente_ar" model="account.account.type.template">
+            <field name="name">No corriente</field>
+            <field name="parent" ref="account_type_template_activo_ar"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_activo_no_corriente_bienes_de_uso_ar" model="account.account.type.template">
+            <field name="name">Bienes de Uso</field>
+            <field name="parent" ref="account_type_template_activo_no_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_activo_no_corriente_amortizaciones_bienes_de_uso_ar" model="account.account.type.template">
+            <field name="name">Amortizaciones Bienes de Uso</field>
+            <field name="parent" ref="account_type_template_activo_no_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="assets" eval="True"/>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_pasivo_ar" model="account.account.type.template">
             <field name="name">Pasivo</field>
+            <field name="sequence" eval="20"/>
+            <field name="parent" ref="account_type_template_root_ar"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="account_type_template_pasivo_corriente_ar" model="account.account.type.template">
+            <field name="name">Corriente</field>
+            <field name="parent" ref="account_type_template_pasivo_ar"/>
+            <field name="statement">balance</field>
             <field name="sequence" eval="10"/>
-            <field name="parent" ref="ar"/>
+        </record>
+        <record id="account_type_template_pasivo_corriente_deudas_sociales_ar" model="account.account.type.template">
+            <field name="name">Deudas sociales</field>
+            <field name="parent" ref="account_type_template_pasivo_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="10"/>
+        </record>
+        <record id="account_type_template_pasivo_corriente_deudas_fiscales_ar" model="account.account.type.template">
+            <field name="name">Deudas fiscales</field>
+            <field name="parent" ref="account_type_template_pasivo_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_pasivo_corriente_deudas_comerciales_ar" model="account.account.type.template">
+            <field name="name">Deudas comerciales</field>
+            <field name="parent" ref="account_type_template_pasivo_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="30"/>
+            <field name="payable" eval="True"/>
+        </record>
+        <record id="account_type_template_pasivo_corriente_provisiones_varias_ar" model="account.account.type.template">
+            <field name="name">Provisiones varias</field>
+            <field name="parent" ref="account_type_template_pasivo_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="40"/>
+        </record>
+        <record id="account_type_template_pasivo_no_corriente_ar" model="account.account.type.template">
+            <field name="name">No Corriente</field>
+            <field name="parent" ref="account_type_template_pasivo_ar"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_pasivo_no_corriente_deudas_comerciales_largo_plazo_ar" model="account.account.type.template">
+            <field name="name">Deudas comerciales a largo plazo</field>
+            <field name="parent" ref="account_type_template_pasivo_no_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="10"/>
+            <field name="payable" eval="True"/>
+        </record>
+        <record id="account_type_template_pasivo_no_corriente_otras_deudas_ar" model="account.account.type.template">
+            <field name="name">Otras deudas</field>
+            <field name="parent" ref="account_type_template_pasivo_no_corriente_ar"/>
+            <field name="statement">balance</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_patriminio_ar" model="account.account.type.template">
+            <field name="name">Patrimonio</field>
+            <field name="sequence" eval="30"/>
+            <field name="parent" ref="account_type_template_root_ar"/>
+            <field name="statement">balance</field>
+        </record>
+        <record id="account_type_template_beneficio_ar" model="account.account.type.template">
+            <field name="name">Beneficio</field>
+            <field name="parent" ref="account_type_template_patriminio_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="40"/>
+        </record>
+        <record id="account_type_template_ingresos_ar" model="account.account.type.template">
+            <field name="name">Ingresos</field>
+            <field name="parent" ref="account_type_template_beneficio_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="10"/>
+            <field name="revenue" eval="True"/>
+        </record>
+        <record id="account_type_template_ingresos_ventas_ar" model="account.account.type.template">
+            <field name="name">Ingresos por Ventas</field>
+            <field name="parent" ref="account_type_template_ingresos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="10"/>
+            <field name="revenue" eval="True"/>
+        </record>
+        <record id="account_type_template_ingresos_financieros_ar" model="account.account.type.template">
+            <field name="name">Ingresos financieros</field>
+            <field name="parent" ref="account_type_template_ingresos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="10"/>
+            <field name="revenue" eval="True"/>
+        </record>
+        <record id="account_type_template_gastos_ar" model="account.account.type.template">
+            <field name="name">Gastos</field>
+            <field name="parent" ref="account_type_template_beneficio_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_gastos_operativos_ar" model="account.account.type.template">
+            <field name="name">Gastos Operativos</field>
+            <field name="parent" ref="account_type_template_gastos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_gastos_operativos_produccion_ar" model="account.account.type.template">
+            <field name="name">Gastos Producción</field>
+            <field name="parent" ref="account_type_template_gastos_operativos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="account_type_template_gastos_operativos_comerciales_ar" model="account.account.type.template">
+            <field name="name">Gastos Comerciales</field>
+            <field name="parent" ref="account_type_template_gastos_operativos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="account_type_template_gastos_operativos_administracion_ar" model="account.account.type.template">
+            <field name="name">Gastos Administrativos</field>
+            <field name="parent" ref="account_type_template_gastos_operativos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="account_type_template_gastos_operativos_fiscales_ar" model="account.account.type.template">
+            <field name="name">Gastos Fiscales</field>
+            <field name="parent" ref="account_type_template_gastos_operativos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="account_type_template_gastos_operativos_otros_ar" model="account.account.type.template">
+            <field name="name">Otros Gastos</field>
+            <field name="parent" ref="account_type_template_gastos_operativos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="account_type_template_gastos_no_operativos_ar" model="account.account.type.template">
+            <field name="name">Gastos No Operativos</field>
+            <field name="parent" ref="account_type_template_gastos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+        </record>
+        <record id="account_type_template_gastos_no_operativos_amortizaciones_ar" model="account.account.type.template">
+            <field name="name">Amortizaciones</field>
+            <field name="parent" ref="account_type_template_gastos_no_operativos_ar"/>
+            <field name="statement">income</field>
+            <field name="sequence" eval="20"/>
+            <field name="expense" eval="True"/>
+        </record>
+        <record id="account_type_template_fuera_de_balance_ar" model="account.account.type.template">
+            <field name="name">Fuera de balance</field>
+            <field name="sequence" eval="60"/>
+            <field name="parent" ref="account_type_template_root_ar"/>
+            <field name="statement">off-balance</field>
         </record>
 
-        <record model="account.account.type.template"
-            id="account_type_ingreso">
-            <field name="name">Ingreso</field>
-            <field name="sequence" eval="10"/>
-            <field name="parent" ref="ar"/>
+        <record model="account.account.template" id="root_ar">
+            <field name="name">Plan de cuentas argentino</field>
+            <field name="type" ref="account_type_template_root_ar"/>
+            <field name="closed" eval="True"/>
         </record>
 
-        <record model="account.account.type.template"
-            id="account_type_egreso">
-            <field name="name">Egreso</field>
-            <field name="sequence" eval="10"/>
-            <field name="parent" ref="ar"/>
-        </record>
-
-        <record model="account.account.type.template"
-            id="account_type_patrimonio">
-            <field name="name">Patrimonio Neto</field>
-            <field name="sequence" eval="10"/>
-            <field name="parent" ref="ar"/>
-        </record>
-
-#
-# Chart of Accounts
-#
-        <record model="account.account.template" id="root">
-            <field name="name">Plan Contable Argentino</field>
-            <field name="kind">view</field>
-            <field name="type" ref="ar"/>
-        </record>
+    </data>
+    <data grouped="1">
 
         <record model="account.account.template" id="activo">
             <field name="name">ACTIVO</field>
             <field name="code">1*</field>
-            <field name="kind">view</field>
-            <field name="parent" ref="root"/>
+            <field name="parent" ref="root_ar"/>
         </record>
+
+        <record model="account.account.template" id="pasivo">
+            <field name="name">PASIVO</field>
+            <field name="code">2*</field>
+            <field name="parent" ref="root_ar"/>
+        </record>
+
+        <record model="account.account.template" id="patrimonio_neto">
+            <field name="name">PATRIMONIO NETO</field>
+            <field name="code">3*</field>
+            <field name="parent" ref="root_ar"/>
+        </record>
+
+        <record model="account.account.template" id="ingresos">
+            <field name="name">INGRESOS</field>
+            <field name="code">4*</field>
+            <field name="parent" ref="root_ar"/>
+        </record>
+
+        <record model="account.account.template" id="gastos">
+            <field name="name">GASTOS</field>
+            <field name="code">5*</field>
+            <field name="parent" ref="root_ar"/>
+        </record>
+    </data>
+    <data>
 
         <record model="account.account.template" id="activo_corriente">
             <field name="name">ACTIVO CORRIENTE</field>
             <field name="code">11*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="activo"/>
         </record>
 
         <record model="account.account.template" id="disponibilidades">
             <field name="name">DISPONIBILIDADES</field>
             <field name="code">111*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="activo_corriente"/>
         </record>
 
         <record model="account.account.template" id="caja_pesos">
             <field name="name">Caja pesos</field>
             <field name="code">11101</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_disponibilidades_ar"/>
             <field name="parent" ref="disponibilidades"/>
         </record>
 
         <record model="account.account.template" id="caja_monex">
             <field name="name">Caja Monex</field>
             <field name="code">11102</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_disponibilidades_ar"/>
             <field name="parent" ref="disponibilidades"/>
         </record>
 
         <record model="account.account.template" id="fondo_fijo">
             <field name="name">Fondo fijo</field>
             <field name="code">11103</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_disponibilidades_ar"/>
             <field name="parent" ref="disponibilidades"/>
         </record>
 
         <record model="account.account.template" id="banco_misc">
             <field name="name">Banco misc</field>
             <field name="code">11104</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_disponibilidades_ar"/>
             <field name="parent" ref="disponibilidades"/>
         </record>
 
         <record model="account.account.template" id="valores_a_depositar">
             <field name="name">Valores a depositar</field>
             <field name="code">11105</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_disponibilidades_ar"/>
             <field name="parent" ref="disponibilidades"/>
         </record>
 
         <record model="account.account.template" id="creditos">
             <field name="name">CRÉDITOS</field>
             <field name="code">113*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="activo_corriente"/>
         </record>
 
@@ -157,9 +329,7 @@ the full copyright notices and license terms. -->
             <field name="name">Deudores por ventas</field>
             <field name="code">11301</field>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_creditos_ar"/>
             <field name="parent" ref="creditos"/>
             <field name="party_required" eval="True"/>
         </record>
@@ -168,9 +338,7 @@ the full copyright notices and license terms. -->
             <field name="name">Deudores morosos</field>
             <field name="code">11302</field>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
-            <field name="kind">receivable</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_creditos_ar"/>
             <field name="parent" ref="creditos"/>
             <field name="party_required" eval="True"/>
         </record>
@@ -178,340 +346,261 @@ the full copyright notices and license terms. -->
         <record model="account.account.template" id="otros_creditos">
             <field name="name">OTROS CRÉDITOS</field>
             <field name="code">114*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="activo_corriente"/>
         </record>
 
         <record model="account.account.template" id="retencion_impuestos_ganancias">
             <field name="name">Retencion impuestos a las ganancias</field>
             <field name="code">11401</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_otros_creditos_ar"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
 
         <record model="account.account.template" id="anticipo_impuestos_ganancias">
             <field name="name">Anticipo impuestos a las ganancias</field>
             <field name="code">11402</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_otros_creditos_ar"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
 
         <record model="account.account.template" id="iva_credito_fiscal">
             <field name="name">IVA crédito fiscal</field>
             <field name="code">11403</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_otros_creditos_ar"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
 
         <record model="account.account.template" id="retencion_iva">
             <field name="name">Retencion IVA</field>
             <field name="code">11405</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_otros_creditos_ar"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
         <record id="percepcion_iva" model="account.account.template">
-          <field name="name">Percepcion IVA</field>
-          <field name="code">11409</field>
-          <field eval="True" name="deferral" />
-          <field eval="False" name="reconcile" />
-          <field name="kind">other</field>
-          <field name="type" ref="account_type_activo" />
-          <field name="parent" ref="otros_creditos" />
+            <field name="name">Percepcion IVA</field>
+            <field name="code">11409</field>
+            <field name="type" ref="account_type_template_activo_corriente_otros_creditos_ar"/>
+            <field name="parent" ref="otros_creditos" />
         </record>
 
         <record model="account.account.template" id="retencion_ingresos_brutos">
             <field name="name">Retencion ingresos brutos</field>
             <field name="code">11406</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_otros_creditos_ar"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
         <record id="percepciones_ingresos_brutos" model="account.account.template">
             <field name="name">Percepciones Ingresos Brutos</field>
             <field name="code">11408</field>
-            <field eval="True" name="deferral" />
-            <field eval="False" name="reconcile" />
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo" />
+            <field name="type" ref="account_type_template_activo_corriente_otros_creditos_ar"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
 
         <record model="account.account.template" id="saldo_favorable_ing_ganancias">
             <field name="name">Saldo a favor ingresos a las ganancias</field>
             <field name="code">11407</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_otros_creditos_ar"/>
             <field name="parent" ref="otros_creditos"/>
         </record>
         <record id="saldo_favorable_iva" model="account.account.template">
-          <field name="name">Iva Saldo a Favor</field>
-          <field name="code">11410</field>
-          <field eval="True" name="deferral" />
-          <field eval="False" name="reconcile" />
-          <field name="kind">other</field>
-          <field name="type" ref="account_type_activo" />
-          <field name="parent" ref="otros_creditos" />
+            <field name="name">Iva Saldo a Favor</field>
+            <field name="code">11410</field>
+            <field name="type" ref="account_type_template_activo_corriente_otros_creditos_ar"/>
+            <field name="parent" ref="otros_creditos" />
         </record>
 
         <record model="account.account.template" id="bienes_de_cambio">
             <field name="name">BIENES DE CAMBIO</field>
             <field name="code">115*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="activo_corriente"/>
         </record>
 
         <record model="account.account.template" id="equipos">
             <field name="name">Equipos</field>
             <field name="code">11501</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_bienes_de_cambio_ar"/>
             <field name="parent" ref="bienes_de_cambio"/>
         </record>
 
         <record model="account.account.template" id="equipos_en_demo">
             <field name="name">Equipos en Demo</field>
             <field name="code">11502</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_corriente_bienes_de_cambio_ar"/>
             <field name="parent" ref="bienes_de_cambio"/>
         </record>
 
         <record model="account.account.template" id="activo_no_corriente">
             <field name="name">ACTIVO NO CORRIENTE</field>
             <field name="code">12*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="activo"/>
         </record>
 
         <record model="account.account.template" id="bienes_de_uso">
             <field name="name">BIENES DE USO</field>
             <field name="code">124*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="activo_no_corriente"/>
         </record>
 
         <record model="account.account.template" id="equipos_de_computacion">
             <field name="name">Equipos computación</field>
             <field name="code">12401</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_no_corriente_bienes_de_uso_ar"/>
             <field name="parent" ref="bienes_de_uso"/>
         </record>
 
         <record model="account.account.template" id="software">
             <field name="name">Software</field>
             <field name="code">12402</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_no_corriente_bienes_de_uso_ar"/>
             <field name="parent" ref="bienes_de_uso"/>
         </record>
 
         <record model="account.account.template" id="instalaciones">
             <field name="name">Instalaciones</field>
             <field name="code">12403</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_no_corriente_bienes_de_uso_ar"/>
             <field name="parent" ref="bienes_de_uso"/>
         </record>
 
         <record model="account.account.template" id="muebles_y_utiles">
             <field name="name">Muebles y útiles</field>
             <field name="code">12404</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_no_corriente_bienes_de_uso_ar"/>
             <field name="parent" ref="bienes_de_uso"/>
         </record>
 
         <record model="account.account.template" id="amortizacion_acumulada_bs_uso">
             <field name="name">AMORTIZACIONES ACUMULADAS BIENES DE USO</field>
             <field name="code">125*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="activo_no_corriente"/>
         </record>
 
         <record model="account.account.template" id="amortizacion_acumulada_computacion">
             <field name="name">Amortización acumulada equipos computación</field>
             <field name="code">12501</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_no_corriente_amortizaciones_bienes_de_uso_ar"/>
             <field name="parent" ref="amortizacion_acumulada_bs_uso"/>
         </record>
 
         <record model="account.account.template" id="amortizacion_acumulada_software">
             <field name="name">Amortización acumulada software</field>
             <field name="code">12502</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_no_corriente_amortizaciones_bienes_de_uso_ar"/>
             <field name="parent" ref="amortizacion_acumulada_bs_uso"/>
         </record>
 
         <record model="account.account.template" id="amortizacion_acumulada_instalaciones">
             <field name="name">Amortización acumulada instalaciones</field>
             <field name="code">12503</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_no_corriente_amortizaciones_bienes_de_uso_ar"/>
             <field name="parent" ref="amortizacion_acumulada_bs_uso"/>
         </record>
 
         <record model="account.account.template" id="amortizacion_acumulada_muebles_utiles">
             <field name="name">Amortización acumulada muebles y útiles</field>
             <field name="code">12504</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_activo"/>
+            <field name="type" ref="account_type_template_activo_no_corriente_amortizaciones_bienes_de_uso_ar"/>
             <field name="parent" ref="amortizacion_acumulada_bs_uso"/>
-        </record>
-
-        <record model="account.account.template" id="pasivo">
-            <field name="name">PASIVO</field>
-            <field name="code">2*</field>
-            <field name="kind">view</field>
-            <field name="parent" ref="root"/>
         </record>
 
         <record model="account.account.template" id="pasivo_corriente">
             <field name="name">PASIVO CORRIENTE</field>
             <field name="code">21*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="pasivo"/>
         </record>
 
         <record model="account.account.template" id="deudas_sociales">
             <field name="name">DEUDAS SOCIALES</field>
             <field name="code">211*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="pasivo_corriente"/>
         </record>
 
         <record model="account.account.template" id="sueldos_a_pagar">
             <field name="name">Sueldos a pagar</field>
             <field name="code">21101</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_sociales_ar"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
 
         <record model="account.account.template" id="cargas_sociales_a_pagar">
             <field name="name">Cargas sociales a pagar</field>
             <field name="code">21102</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_sociales_ar"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
 
         <record model="account.account.template" id="provision_sac_a_pagar">
             <field name="name">Provision SAC a pagar</field>
             <field name="code">21103</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_sociales_ar"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
 
         <record model="account.account.template" id="provision_sac_cargas_sociales">
             <field name="name">Provision SAC cargas sociales a pagar</field>
             <field name="code">21104</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_sociales_ar"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
 
         <record model="account.account.template" id="beneficios_al_personal">
             <field name="name">Beneficios al personal</field>
             <field name="code">21105</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_sociales_ar"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
 
         <record model="account.account.template" id="prevision_despidos">
             <field name="name">Previsión Despidos</field>
             <field name="code">21106</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_sociales_ar"/>
             <field name="parent" ref="deudas_sociales"/>
         </record>
 
         <record model="account.account.template" id="deudas_fiscales">
             <field name="name">DEUDAS FISCALES</field>
             <field name="code">212*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="pasivo_corriente"/>
         </record>
 
         <record model="account.account.template" id="ingresos_brutos_a_pagar">
             <field name="name">Ingresos brutos a pagar</field>
             <field name="code">21201</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_fiscales_ar"/>
             <field name="parent" ref="deudas_fiscales"/>
         </record>
 
         <record model="account.account.template" id="iva_debito_fiscal">
             <field name="name">IVA débito fiscal</field>
             <field name="code">21202</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_fiscales_ar"/>
             <field name="parent" ref="deudas_fiscales"/>
         </record>
 
         <record model="account.account.template" id="iva_a_pagar">
             <field name="name">IVA a pagar</field>
             <field name="code">21203</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_fiscales_ar"/>
             <field name="parent" ref="deudas_fiscales"/>
         </record>
 
         <record model="account.account.template" id="retencion_ganancias_a_depositar">
             <field name="name">Retención ganancias a depositar</field>
             <field name="code">21204</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_fiscales_ar"/>
             <field name="parent" ref="deudas_fiscales"/>
         </record>
 
         <record model="account.account.template" id="provision_impuesto_a_las_ganancias">
             <field name="name">Provision impuesto a las ganancias</field>
             <field name="code">21205</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_fiscales_ar"/>
             <field name="parent" ref="deudas_fiscales"/>
         </record>
 
         <record model="account.account.template" id="deudas_comerciales">
             <field name="name">DEUDAS COMERCIALES</field>
             <field name="code">213*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="pasivo_corriente"/>
         </record>
 
@@ -519,9 +608,7 @@ the full copyright notices and license terms. -->
             <field name="name">Proveedores</field>
             <field name="code">21301</field>
             <field name="reconcile" eval="True"/>
-            <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_comerciales_ar"/>
             <field name="parent" ref="deudas_comerciales"/>
             <field name="party_required" eval="True"/>
         </record>
@@ -529,9 +616,7 @@ the full copyright notices and license terms. -->
         <record model="account.account.template" id="anticipos_de_clientes">
             <field name="name">Anticipos de clientes</field>
             <field name="code">21302</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_deudas_comerciales_ar"/>
             <field name="parent" ref="deudas_comerciales"/>
             <field name="party_required" eval="True"/>
         </record>
@@ -539,39 +624,32 @@ the full copyright notices and license terms. -->
         <record model="account.account.template" id="provisiones_varias">
             <field name="name">PROVISIONES VARIAS</field>
             <field name="code">214*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="pasivo_corriente"/>
         </record>
 
         <record model="account.account.template" id="provision_gastos">
             <field name="name">Provision gastos</field>
             <field name="code">21401</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
-            <field name="parent" ref="pasivo_corriente"/>
+            <field name="type" ref="account_type_template_pasivo_corriente_provisiones_varias_ar"/>
+            <field name="parent" ref="provisiones_varias"/>
         </record>
 
         <record model="account.account.template" id="pasivo_no_corriente">
             <field name="name">PASIVO NO CORRIENTE</field>
             <field name="code">22*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="pasivo"/>
         </record>
 
         <record model="account.account.template" id="deudas_comerciales_largo_plazo">
             <field name="name">DEUDAS COMERCIALES A LARGO PLAZO</field>
             <field name="code">221*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="pasivo_no_corriente"/>
         </record>
 
         <record model="account.account.template" id="proveedores_largo_plazo">
             <field name="name">Deudas proveedores a largo plazo</field>
             <field name="code">22101</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">payable</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_no_corriente_deudas_comerciales_largo_plazo_ar"/>
             <field name="parent" ref="deudas_comerciales_largo_plazo"/>
             <field name="party_required" eval="True"/>
         </record>
@@ -579,401 +657,332 @@ the full copyright notices and license terms. -->
         <record model="account.account.template" id="otras_deudas">
             <field name="name">OTRAS DEUDAS</field>
             <field name="code">222*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="pasivo_no_corriente"/>
         </record>
 
         <record model="account.account.template" id="deudas_misc">
             <field name="name">Deudas misc</field>
             <field name="code">22201</field>
-            <field name="deferral" eval="True"/>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_pasivo"/>
+            <field name="type" ref="account_type_template_pasivo_no_corriente_otras_deudas_ar"/>
             <field name="parent" ref="otras_deudas"/>
-        </record>
-
-        <record model="account.account.template" id="patrimonio_neto">
-            <field name="name">PATRIMONIO NETO</field>
-            <field name="code">3*</field>
-            <field name="kind">view</field>
-            <field name="parent" ref="root"/>
         </record>
 
         <record model="account.account.template" id="capital">
             <field name="name">Capital</field>
             <field name="code">31000</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_patrimonio"/>
+            <field name="type" ref="account_type_template_fuera_de_balance_ar"/>
             <field name="parent" ref="patrimonio_neto"/>
         </record>
 
         <record model="account.account.template" id="aporte_irrevocable">
             <field name="name">Aporte irrevocable</field>
             <field name="code">32000</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_patrimonio"/>
+            <field name="type" ref="account_type_template_fuera_de_balance_ar"/>
             <field name="parent" ref="patrimonio_neto"/>
         </record>
 
         <record model="account.account.template" id="reserva_legal">
             <field name="name">Reserva legal</field>
             <field name="code">33000</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_patrimonio"/>
+            <field name="type" ref="account_type_template_fuera_de_balance_ar"/>
             <field name="parent" ref="patrimonio_neto"/>
         </record>
 
         <record model="account.account.template" id="resultados_no_asignados">
             <field name="name">Resultados no asignados</field>
             <field name="code">34000</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_patrimonio"/>
+            <field name="type" ref="account_type_template_fuera_de_balance_ar"/>
             <field name="parent" ref="patrimonio_neto"/>
         </record>
 
         <record model="account.account.template" id="resultado_del_ejercicio">
             <field name="name">Resultado del ejercicio</field>
             <field name="code">35000</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_patrimonio"/>
+            <field name="type" ref="account_type_template_fuera_de_balance_ar"/>
             <field name="parent" ref="patrimonio_neto"/>
-        </record>
-
-        <record model="account.account.template" id="ingresos">
-            <field name="name">INGRESOS</field>
-            <field name="code">4*</field>
-            <field name="kind">view</field>
-            <field name="parent" ref="root"/>
         </record>
 
         <record model="account.account.template" id="ingresos_operativos">
             <field name="name">INGRESOS OPERATIVOS</field>
             <field name="code">41*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="ingresos"/>
         </record>
 
         <record model="account.account.template" id="ventas">
             <field name="name">VENTAS</field>
             <field name="code">411*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="ingresos_operativos"/>
         </record>
 
         <record model="account.account.template" id="a_sale">
             <field name="name">Ingresos por ventas</field>
             <field name="code">41100</field>
-            <field name="kind">revenue</field>
-            <field name="type" ref="account_type_ingreso"/>
+            <field name="type" ref="account_type_template_ingresos_ventas_ar"/>
             <field name="parent" ref="ventas"/>
         </record>
 
         <record model="account.account.template" id="venta_de_equipos">
             <field name="name">Venta de equipos</field>
             <field name="code">41101</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_ingreso"/>
+            <field name="type" ref="account_type_template_ingresos_ventas_ar"/>
             <field name="parent" ref="ventas"/>
         </record>
 
         <record model="account.account.template" id="venta_de_servicios_misc">
             <field name="name">Venta servicios misc</field>
             <field name="code">41102</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_ingreso"/>
+            <field name="type" ref="account_type_template_ingresos_ventas_ar"/>
             <field name="parent" ref="ventas"/>
         </record>
 
         <record model="account.account.template" id="otros_ingresos">
             <field name="name">OTROS INGRESOS</field>
             <field name="code">42*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="ingresos"/>
         </record>
 
         <record model="account.account.template" id="ingresos_financieros">
             <field name="name">INGRESOS FINANCIEROS</field>
             <field name="code">421*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="otros_ingresos"/>
         </record>
 
         <record model="account.account.template" id="resultado_invesiones_financieras">
             <field name="name">Resultado de inversiones financieras</field>
             <field name="code">42110</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_ingreso"/>
+            <field name="type" ref="account_type_template_ingresos_financieros_ar"/>
             <field name="parent" ref="ingresos_financieros"/>
-        </record>
-
-        <record model="account.account.template" id="gastos">
-            <field name="name">GASTOS</field>
-            <field name="code">5*</field>
-            <field name="kind">view</field>
-            <field name="parent" ref="root"/>
         </record>
 
         <record model="account.account.template" id="gastos_operativos">
             <field name="name">GASTOS OPERATIVOS</field>
             <field name="code">51*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="gastos"/>
         </record>
 
         <record model="account.account.template" id="gastos_de_produccion">
             <field name="name">GASTOS DE PRODUCCION</field>
             <field name="code">511*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="gastos_operativos"/>
         </record>
 
         <record model="account.account.template" id="a_expense">
             <field name="name">Gastos operativos general</field>
             <field name="code">51100</field>
-            <field name="kind">expense</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_produccion_ar"/>
             <field name="parent" ref="gastos_de_produccion"/>
         </record>
 
         <record model="account.account.template" id="haberes">
             <field name="name">Haberes</field>
             <field name="code">51101</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_produccion_ar"/>
             <field name="parent" ref="gastos_de_produccion"/>
         </record>
 
         <record model="account.account.template" id="cargas_sociales">
             <field name="name">Cargas Sociales</field>
             <field name="code">51102</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_produccion_ar"/>
             <field name="parent" ref="gastos_de_produccion"/>
         </record>
 
         <record model="account.account.template" id="costo_de_equipos">
             <field name="name">Costo de equipos</field>
             <field name="code">51103</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_produccion_ar"/>
             <field name="parent" ref="gastos_de_produccion"/>
         </record>
 
         <record model="account.account.template" id="materiales">
             <field name="name">Materiales</field>
             <field name="code">51104</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_produccion_ar"/>
             <field name="parent" ref="gastos_de_produccion"/>
         </record>
 
         <record model="account.account.template" id="gastos_comerciales">
             <field name="name">GASTOS COMERCIALES</field>
             <field name="code">512*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="gastos_operativos"/>
         </record>
 
         <record model="account.account.template" id="haberes_comerciales">
             <field name="name">Haberes comerciales</field>
             <field name="code">51201</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_comerciales_ar"/>
             <field name="parent" ref="gastos_comerciales"/>
         </record>
 
         <record model="account.account.template" id="cargas_sociales_comerciales">
             <field name="name">Cargas sociales comerciales</field>
             <field name="code">51202</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_comerciales_ar"/>
             <field name="parent" ref="gastos_comerciales"/>
         </record>
 
         <record model="account.account.template" id="comisiones_comerciales">
             <field name="name">Comisiones</field>
             <field name="code">51203</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_comerciales_ar"/>
             <field name="parent" ref="gastos_comerciales"/>
         </record>
 
         <record model="account.account.template" id="publicidad">
             <field name="name">Publicidad</field>
             <field name="code">51204</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_comerciales_ar"/>
             <field name="parent" ref="gastos_comerciales"/>
         </record>
 
         <record model="account.account.template" id="gastos_de_administracion">
             <field name="name">GASTOS DE ADMINISTRACION</field>
             <field name="code">513*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="gastos_operativos"/>
         </record>
 
         <record model="account.account.template" id="haberes_administrativos">
             <field name="name">Haberes administrativos</field>
             <field name="code">51301</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_administracion_ar"/>
             <field name="parent" ref="gastos_de_administracion"/>
         </record>
 
         <record model="account.account.template" id="cargas_sociales_administrativas">
             <field name="name">Cargas sociales administrativas</field>
             <field name="code">51302</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_administracion_ar"/>
             <field name="parent" ref="gastos_de_administracion"/>
         </record>
 
         <record model="account.account.template" id="honorarios">
             <field name="name">Honorarios</field>
             <field name="code">51303</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_administracion_ar"/>
             <field name="parent" ref="gastos_de_administracion"/>
         </record>
 
         <record model="account.account.template" id="alquileres">
             <field name="name">Alquileres</field>
             <field name="code">51304</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_administracion_ar"/>
             <field name="parent" ref="gastos_de_administracion"/>
         </record>
 
         <record model="account.account.template" id="servicios_agua_luz_etc">
             <field name="name">Servicios de luz, agua, etc</field>
             <field name="code">51305</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_administracion_ar"/>
             <field name="parent" ref="gastos_de_administracion"/>
         </record>
 
         <record model="account.account.template" id="mantenimiento_y_limpieza">
             <field name="name">Mantenimiento y limpieza</field>
             <field name="code">51306</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_administracion_ar"/>
             <field name="parent" ref="gastos_de_administracion"/>
         </record>
 
         <record model="account.account.template" id="articulos_libreria">
             <field name="name">Artículos librería</field>
             <field name="code">51307</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_administracion_ar"/>
             <field name="parent" ref="gastos_de_administracion"/>
         </record>
 
         <record model="account.account.template" id="cadeteria_y_correo">
             <field name="name">Cadetería y correo</field>
             <field name="code">51308</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_administracion_ar"/>
             <field name="parent" ref="gastos_de_administracion"/>
         </record>
 
         <record model="account.account.template" id="seguros">
             <field name="name">Seguros</field>
             <field name="code">51309</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_administracion_ar"/>
             <field name="parent" ref="gastos_de_administracion"/>
         </record>
 
         <record model="account.account.template" id="gastos_fiscales">
             <field name="name">GASTOS FISCALES</field>
             <field name="code">514*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="gastos_operativos"/>
         </record>
 
         <record model="account.account.template" id="impuestos_ingresos_brutos">
             <field name="name">Impuestos ingresos brutos</field>
             <field name="code">51401</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_fiscales_ar"/>
             <field name="parent" ref="gastos_fiscales"/>
         </record>
 
         <record model="account.account.template" id="impuestos_a_las_ganancias">
             <field name="name">Impuestos a las ganancias</field>
             <field name="code">51402</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_fiscales_ar"/>
             <field name="parent" ref="gastos_fiscales"/>
         </record>
 
         <record model="account.account.template" id="impuestos_transacciones_bancarias">
             <field name="name">Impuestos transacciones bancarias</field>
             <field name="code">51403</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_fiscales_ar"/>
             <field name="parent" ref="gastos_fiscales"/>
         </record>
 
         <record model="account.account.template" id="otros_gastos">
             <field name="name">OTROS GASTOS</field>
             <field name="code">515*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="gastos_operativos"/>
+            
         </record>
 
         <record model="account.account.template" id="intereses_y_recargos">
             <field name="name">Intereses y recargos</field>
             <field name="code">51501</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_operativos_otros_ar"/>
             <field name="parent" ref="otros_gastos"/>
         </record>
 
         <record model="account.account.template" id="gastos_no_operativos">
             <field name="name">GASTOS NO OPERATIVOS</field>
             <field name="code">52*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="gastos"/>
+            
         </record>
 
         <record model="account.account.template" id="amortizaciones">
             <field name="name">AMORTIZACIONES</field>
             <field name="code">521*</field>
-            <field name="kind">view</field>
             <field name="parent" ref="gastos_no_operativos"/>
         </record>
 
         <record model="account.account.template" id="amortizaciones_instalaciones">
             <field name="name">Amortizaciones instalaciones</field>
             <field name="code">52101</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_no_operativos_amortizaciones_ar"/>
             <field name="parent" ref="amortizaciones"/>
         </record>
 
         <record model="account.account.template" id="amortizaciones_equipos_computacion">
             <field name="name">Amortizaciones equipos de computación</field>
             <field name="code">52102</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_no_operativos_amortizaciones_ar"/>
             <field name="parent" ref="amortizaciones"/>
         </record>
 
         <record model="account.account.template" id="amortizacion_software">
             <field name="name">Amortizacion software</field>
             <field name="code">52103</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_no_operativos_amortizaciones_ar"/>
             <field name="parent" ref="amortizaciones"/>
         </record>
 
         <record model="account.account.template" id="amortizacion_muebles_y_utiles">
             <field name="name">Amortizacion muebles y útiles</field>
             <field name="code">52104</field>
-            <field name="kind">other</field>
-            <field name="type" ref="account_type_egreso"/>
+            <field name="type" ref="account_type_template_gastos_no_operativos_amortizaciones_ar"/>
             <field name="parent" ref="amortizaciones"/>
         </record>
 

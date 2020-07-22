@@ -3,12 +3,14 @@
 # the full copyright notices and license terms.
 
 from trytond.pool import Pool
-from . import account_ar
+from . import account
+
+__all__ = ['register']
 
 
 def register():
     Pool.register(
-        account_ar.TaxTemplate,
-        account_ar.Tax,
-        account_ar.TaxGroup,
+        account.TaxTemplate,
+        account.Tax,
+        account.TaxGroup,
         module='account_ar', type_='model')
