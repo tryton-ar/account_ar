@@ -10,10 +10,12 @@ from trytond.pyson import Eval, Bool
 class TaxGroup(metaclass=PoolMeta):
     __name__ = 'account.tax.group'
 
-    tribute_id = fields.Char("Tribute ID", states={
+    tribute_id = fields.Char("Tribute ID",
+        states={
             'invisible': Eval('afip_kind') == 'gravado',
             'required': Eval('afip_kind') != 'gravado',
-            })
+            },
+        depends=['afip_kind'])
     afip_kind = fields.Selection([
         ('gravado', 'Gravado'),
         ('nacional', 'Nacional'),
@@ -21,7 +23,7 @@ class TaxGroup(metaclass=PoolMeta):
         ('municipal', 'Municipal'),
         ('interno', 'Interno'),
         ('other', 'Other'),
-        ], 'AFIP Kind', required=True)
+        ], 'AFIP Kind', required=True, sort=False)
 
 
 class TaxTemplate(metaclass=PoolMeta):
