@@ -1,9 +1,7 @@
 <?xml version="1.0"?>
-<!-- This file is part of the account_ar module for Tryton.
-The COPYRIGHT file at the top level of this repository contains
-the full copyright notices and license terms. -->
 <tryton>
     <data>
+
         <record model="account.account.type.template" id="account_type_template_root_ar">
             <field name="name">Tipos de cuentas Argentina</field>
             <field name="sequence" eval="10"/>
@@ -269,6 +267,7 @@ the full copyright notices and license terms. -->
             <field name="code">5*</field>
             <field name="parent" ref="root_ar"/>
         </record>
+
     </data>
     <data>
 
@@ -935,7 +934,6 @@ the full copyright notices and license terms. -->
             <field name="name">OTROS GASTOS</field>
             <field name="code">515*</field>
             <field name="parent" ref="gastos_operativos"/>
-            
         </record>
 
         <record model="account.account.template" id="intereses_y_recargos">
@@ -949,7 +947,6 @@ the full copyright notices and license terms. -->
             <field name="name">GASTOS NO OPERATIVOS</field>
             <field name="code">52*</field>
             <field name="parent" ref="gastos"/>
-            
         </record>
 
         <record model="account.account.template" id="amortizaciones">
