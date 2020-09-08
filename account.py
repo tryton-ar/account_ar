@@ -30,7 +30,7 @@ class TaxTemplate(metaclass=PoolMeta):
     iva_code = fields.Char("IVA Code")
 
     def _get_tax_value(self, tax=None):
-        value = super(TaxTemplate, self)._get_tax_value(tax=tax)
+        value = super()._get_tax_value(tax=tax)
         if not tax or tax.iva_code != self.iva_code:
             value['iva_code'] = self.iva_code
         return value
@@ -48,5 +48,5 @@ class Tax(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Tax, cls).__setup__()
+        super().__setup__()
         cls.group.required = True
