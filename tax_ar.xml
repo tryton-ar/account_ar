@@ -2,827 +2,1121 @@
 <tryton>
     <data>
 
-        <record model="account.tax.group" id="grupo_iva_compra">
-            <field name="name">IVA Compras</field>
-            <field name="code">IVA</field>
-            <field name="kind">purchase</field>
-            <field name="afip_kind">gravado</field>
-        </record>
+<!-- Tax Group -->
 
-        <record model="account.tax.group" id="grupo_iva_venta">
+        <record model="account.tax.group" id="group_iva_venta">
             <field name="name">IVA Ventas</field>
             <field name="code">IVA</field>
             <field name="kind">sale</field>
             <field name="afip_kind">gravado</field>
         </record>
 
-        <record model="account.tax.group" id="grupo_provincial_venta">
-            <field name="name">IIBB Ventas</field>
-            <field name="code">IIBB</field>
-            <field name="kind">sale</field>
-            <field name="afip_kind">provincial</field>
-            <field name="tribute_id">2</field>
-        </record>
-
-        <record model="account.tax.group" id="grupo_provincial_compra">
-            <field name="name">IIBB Compras</field>
-            <field name="code">IIBB</field>
+        <record model="account.tax.group" id="group_iva_compra">
+            <field name="name">IVA Compras</field>
+            <field name="code">IVA</field>
             <field name="kind">purchase</field>
-            <field name="afip_kind">provincial</field>
-            <field name="tribute_id">2</field>
+            <field name="afip_kind">gravado</field>
         </record>
 
-        <record model="account.tax.group" id="grupo_nacional_venta">
-            <field name="name">Percepciones ventas</field>
+        <record model="account.tax.group" id="group_nac_venta">
+            <field name="name">Percepciones nacionales Ventas</field>
             <field name="code">nacional</field>
             <field name="kind">sale</field>
             <field name="afip_kind">nacional</field>
             <field name="tribute_id">1</field>
         </record>
 
-        <record model="account.tax.group" id="grupo_nacional_compra">
-            <field name="name">Percepciones compras</field>
+        <record model="account.tax.group" id="group_nac_compra">
+            <field name="name">Percepciones nacionales Compras</field>
             <field name="code">nacional</field>
             <field name="kind">purchase</field>
             <field name="afip_kind">nacional</field>
             <field name="tribute_id">1</field>
         </record>
 
-        <record model="account.tax.group" id="grupo_municipal_venta">
-            <field name="name">Municipal ventas</field>
+        <record model="account.tax.group" id="group_prov_venta">
+            <field name="name">Percepciones provinciales Ventas</field>
+            <field name="code">provincial</field>
+            <field name="kind">sale</field>
+            <field name="afip_kind">provincial</field>
+            <field name="tribute_id">2</field>
+        </record>
+
+        <record model="account.tax.group" id="group_prov_compra">
+            <field name="name">Percepciones provinciales Compras</field>
+            <field name="code">provincial</field>
+            <field name="kind">purchase</field>
+            <field name="afip_kind">provincial</field>
+            <field name="tribute_id">2</field>
+        </record>
+
+        <record model="account.tax.group" id="group_muni_venta">
+            <field name="name">Percepciones municipales Ventas</field>
             <field name="code">municipal</field>
             <field name="kind">sale</field>
             <field name="afip_kind">municipal</field>
             <field name="tribute_id">3</field>
         </record>
 
-        <record model="account.tax.group" id="grupo_municipal_compra">
-            <field name="name">Municipal compras</field>
+        <record model="account.tax.group" id="group_muni_compra">
+            <field name="name">Percepciones municipales Compras</field>
             <field name="code">municipal</field>
             <field name="kind">purchase</field>
             <field name="afip_kind">municipal</field>
             <field name="tribute_id">3</field>
         </record>
 
-        <record model="account.tax.group" id="grupo_interno_venta">
-            <field name="name">Interno ventas</field>
+        <record model="account.tax.group" id="group_int_venta">
+            <field name="name">Impuestos internos Ventas</field>
             <field name="code">interno</field>
             <field name="kind">sale</field>
             <field name="afip_kind">interno</field>
             <field name="tribute_id">4</field>
         </record>
 
-        <record model="account.tax.group" id="grupo_interno_compra">
-            <field name="name">Interno compras</field>
+        <record model="account.tax.group" id="group_int_compra">
+            <field name="name">Impuestos internos Compras</field>
             <field name="code">interno</field>
             <field name="kind">purchase</field>
             <field name="afip_kind">interno</field>
             <field name="tribute_id">4</field>
         </record>
 
-        <record model="account.tax.group" id="grupo_other">
-            <field name="name">Other</field>
-            <field name="code">other</field>
+        <record model="account.tax.group" id="group_otro">
+            <field name="name">Otros tributos</field>
+            <field name="code">otro</field>
             <field name="kind">both</field>
             <field name="afip_kind">other</field>
             <field name="tribute_id">99</field>
         </record>
 
-        <record model="account.tax.template" id="vat_21_ventas">
-            <field name="name">IVA Ventas 21%</field>
-            <field name="description">IVA Asociado a ventas - 21%</field>
-            <field name="rate" eval="Decimal('0.21')"/>
-            <field name="type">percentage</field>
+<!-- Tax Template -->
+
+        <record model="account.tax.template" id="tax_iva_venta_nogravado">
+            <field name="name">IVA Ventas No Gravado</field>
+            <field name="description">IVA Ventas No Gravado</field>
+            <field name="amount" eval="Decimal('0')"/>
+            <field name="type">fixed</field>
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_venta"/>
-            <field name="iva_code">5</field>
+            <field name="group" ref="group_iva_venta"/>
+            <field name="iva_code">1</field>
         </record>
 
-        <record model="account.tax.template" id="vat_105_ventas">
-            <field name="name">IVA Ventas 10.5%</field>
-            <field name="description">IVA Asociado a ventas - 10.5%</field>
-            <field name="rate" eval="Decimal('0.105')"/>
-            <field name="type">percentage</field>
+        <record model="account.tax.template" id="tax_iva_venta_exento">
+            <field name="name">IVA Ventas Exento</field>
+            <field name="description">IVA Ventas Exento</field>
+            <field name="amount" eval="Decimal('0')"/>
+            <field name="type">fixed</field>
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_venta"/>
-            <field name="iva_code">4</field>
+            <field name="group" ref="group_iva_venta"/>
+            <field name="iva_code">2</field>
         </record>
 
-        <record model="account.tax.template" id="vat_27_ventas">
-            <field name="name">IVA Ventas 27%</field>
-            <field name="description">IVA Asociado a ventas - 27%</field>
-            <field name="rate" eval="Decimal('0.27')"/>
-            <field name="type">percentage</field>
-            <field name="invoice_account" ref="iva_debito_fiscal"/>
-            <field name="credit_note_account" ref="iva_debito_fiscal"/>
-            <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_venta"/>
-            <field name="iva_code">6</field>
-        </record>
-
-        <record model="account.tax.template" id="vat_0_ventas">
+        <record model="account.tax.template" id="tax_iva_venta_000">
             <field name="name">IVA Ventas 0%</field>
-            <field name="description">IVA Asociado a ventas - 0%</field>
+            <field name="description">IVA Ventas 0%</field>
             <field name="rate" eval="Decimal('0.0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_venta"/>
+            <field name="group" ref="group_iva_venta"/>
             <field name="iva_code">3</field>
         </record>
 
-        <record model="account.tax.template" id="vat_05_ventas">
-            <field name="name">IVA Ventas 5%</field>
-            <field name="description">IVA Asociado a ventas - 5%</field>
-            <field name="rate" eval="Decimal('0.05')"/>
-            <field name="type">percentage</field>
-            <field name="invoice_account" ref="iva_debito_fiscal"/>
-            <field name="credit_note_account" ref="iva_debito_fiscal"/>
-            <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_venta"/>
-            <field name="iva_code">8</field>
-        </record>
-
-        <record model="account.tax.template" id="vat_025_ventas">
-            <field name="name">IVA Ventas 2.5%</field>
-            <field name="description">IVA Asociado a ventas - 2.5%</field>
+        <record model="account.tax.template" id="tax_iva_venta_025">
+            <field name="name">IVA Ventas 2,5%</field>
+            <field name="description">IVA Ventas 2,5%</field>
             <field name="rate" eval="Decimal('0.025')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_venta"/>
+            <field name="group" ref="group_iva_venta"/>
             <field name="iva_code">9</field>
         </record>
 
-        <record model="account.tax.template" id="vat_21_compras">
-            <field name="name">IVA Compras 21%</field>
-            <field name="description">IVA Asociado a compras - 21%</field>
+        <record model="account.tax.template" id="tax_iva_venta_050">
+            <field name="name">IVA Ventas 5%</field>
+            <field name="description">IVA Ventas 5%</field>
+            <field name="rate" eval="Decimal('0.05')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="iva_debito_fiscal"/>
+            <field name="credit_note_account" ref="iva_debito_fiscal"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_iva_venta"/>
+            <field name="iva_code">8</field>
+        </record>
+
+        <record model="account.tax.template" id="tax_iva_venta_105">
+            <field name="name">IVA Ventas 10,5%</field>
+            <field name="description">IVA Ventas 10,5%</field>
+            <field name="rate" eval="Decimal('0.105')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="iva_debito_fiscal"/>
+            <field name="credit_note_account" ref="iva_debito_fiscal"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_iva_venta"/>
+            <field name="iva_code">4</field>
+        </record>
+
+        <record model="account.tax.template" id="tax_iva_venta_210">
+            <field name="name">IVA Ventas 21%</field>
+            <field name="description">IVA Ventas 21%</field>
             <field name="rate" eval="Decimal('0.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="iva_debito_fiscal"/>
+            <field name="credit_note_account" ref="iva_debito_fiscal"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_iva_venta"/>
+            <field name="iva_code">5</field>
+        </record>
+
+        <record model="account.tax.template" id="tax_iva_venta_270">
+            <field name="name">IVA Ventas 27%</field>
+            <field name="description">IVA Ventas 27%</field>
+            <field name="rate" eval="Decimal('0.27')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="iva_debito_fiscal"/>
+            <field name="credit_note_account" ref="iva_debito_fiscal"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_iva_venta"/>
+            <field name="iva_code">6</field>
+        </record>
+
+        <record model="account.tax.template" id="tax_iva_compra_nogravado">
+            <field name="name">IVA Compras No Gravado</field>
+            <field name="description">IVA Compras No Gravado</field>
+            <field name="amount" eval="Decimal('0')"/>
+            <field name="type">fixed</field>
+            <field name="invoice_account" ref="iva_credito_fiscal"/>
+            <field name="credit_note_account" ref="iva_credito_fiscal"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_iva_compra"/>
+            <field name="iva_code">1</field>
+        </record>
+
+        <record model="account.tax.template" id="tax_iva_compra_exento">
+            <field name="name">IVA Compras Exento</field>
+            <field name="description">IVA Compras Exento</field>
+            <field name="amount" eval="Decimal('0')"/>
+            <field name="type">fixed</field>
+            <field name="invoice_account" ref="iva_credito_fiscal"/>
+            <field name="credit_note_account" ref="iva_credito_fiscal"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_iva_compra"/>
+            <field name="iva_code">2</field>
+        </record>
+
+        <record model="account.tax.template" id="tax_iva_compra_000">
+            <field name="name">IVA Compras 0%</field>
+            <field name="description">IVA Compras 0%</field>
+            <field name="rate" eval="Decimal('0.0')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_credito_fiscal"/>
             <field name="credit_note_account" ref="iva_credito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_compra"/>
-            <field name="iva_code">5</field>
+            <field name="group" ref="group_iva_compra"/>
+            <field name="iva_code">3</field>
         </record>
 
-        <record model="account.tax.template" id="vat_105_compras">
-            <field name="name">IVA Compras 10.5%</field>
-            <field name="description">IVA Asociado a compras - 10.5%</field>
+        <record model="account.tax.template" id="tax_iva_compra_025">
+            <field name="name">IVA Compras 2,5%</field>
+            <field name="description">IVA Compras 2,5%</field>
+            <field name="rate" eval="Decimal('0.025')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="iva_credito_fiscal"/>
+            <field name="credit_note_account" ref="iva_credito_fiscal"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_iva_compra"/>
+            <field name="iva_code">9</field>
+        </record>
+
+        <record model="account.tax.template" id="tax_iva_compra_050">
+            <field name="name">IVA Compras 5%</field>
+            <field name="description">IVA Compras 5%</field>
+            <field name="rate" eval="Decimal('0.05')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="iva_credito_fiscal"/>
+            <field name="credit_note_account" ref="iva_credito_fiscal"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_iva_compra"/>
+            <field name="iva_code">8</field>
+        </record>
+
+        <record model="account.tax.template" id="tax_iva_compra_105">
+            <field name="name">IVA Compras 10,5%</field>
+            <field name="description">IVA Compras 10,5%</field>
             <field name="rate" eval="Decimal('0.105')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_credito_fiscal"/>
             <field name="credit_note_account" ref="iva_credito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_compra"/>
+            <field name="group" ref="group_iva_compra"/>
             <field name="iva_code">4</field>
         </record>
 
-        <record model="account.tax.template" id="vat_27_compras">
+        <record model="account.tax.template" id="tax_iva_compra_210">
+            <field name="name">IVA Compras 21%</field>
+            <field name="description">IVA Compras 21%</field>
+            <field name="rate" eval="Decimal('0.21')"/>
+            <field name="type">percentage</field>
+            <field name="invoice_account" ref="iva_credito_fiscal"/>
+            <field name="credit_note_account" ref="iva_credito_fiscal"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_iva_compra"/>
+            <field name="iva_code">5</field>
+        </record>
+
+        <record model="account.tax.template" id="tax_iva_compra_270">
             <field name="name">IVA Compras 27%</field>
-            <field name="description">IVA Asociado a compras - 27%</field>
+            <field name="description">IVA Compras 27%</field>
             <field name="rate" eval="Decimal('0.27')"/>
             <field name="type">percentage</field>
             <field name="invoice_account" ref="iva_credito_fiscal"/>
             <field name="credit_note_account" ref="iva_credito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_compra"/>
+            <field name="group" ref="group_iva_compra"/>
             <field name="iva_code">6</field>
         </record>
 
-        <record model="account.tax.template" id="vat_0_compras">
-            <field name="name">IVA Compras 0%</field>
-            <field name="description">IVA Asociado a compras - 0%</field>
-            <field name="rate" eval="Decimal('0.0')"/>
-            <field name="type">percentage</field>
-            <field name="invoice_account" ref="iva_credito_fiscal"/>
-            <field name="credit_note_account" ref="iva_credito_fiscal"/>
-            <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_compra"/>
-            <field name="iva_code">3</field>
-        </record>
-
-        <record model="account.tax.template" id="vat_05_compras">
-            <field name="name">IVA Compras 5%</field>
-            <field name="description">IVA Asociado a compras - 5%</field>
-            <field name="rate" eval="Decimal('0.05')"/>
-            <field name="type">percentage</field>
-            <field name="invoice_account" ref="iva_credito_fiscal"/>
-            <field name="credit_note_account" ref="iva_credito_fiscal"/>
-            <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_compra"/>
-            <field name="iva_code">8</field>
-        </record>
-
-        <record model="account.tax.template" id="vat_025_compras">
-            <field name="name">IVA Compras 2.5%</field>
-            <field name="description">IVA Asociado a compras - 2.5%</field>
-            <field name="rate" eval="Decimal('0.025')"/>
-            <field name="type">percentage</field>
-            <field name="invoice_account" ref="iva_credito_fiscal"/>
-            <field name="credit_note_account" ref="iva_credito_fiscal"/>
-            <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_iva_compra"/>
-            <field name="iva_code">9</field>
-        </record>
-
-        <record model="account.tax.template" id="iibb_percepcion">
-            <field name="name">Percepcion IIBB</field>
-            <field name="description">Percepcion Ingresos Brutos</field>
-            <field name="rate" eval="Decimal('0')"/>
-            <field name="type">percentage</field>
+        <record model="account.tax.template" id="tax_prov_iibb">
+            <field name="name">Percepción IIBB</field>
+            <field name="description">Percepción de Ingresos Brutos</field>
+            <field name="type">none</field>
             <field name="invoice_account" ref="percepciones_ingresos_brutos"/>
             <field name="credit_note_account" ref="percepciones_ingresos_brutos"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_provincial_compra"/>
+            <field name="group" ref="group_prov_compra"/>
         </record>
 
-        <record model="account.tax.template" id="iva_percepcion">
-            <field name="name">Percepcion IVA</field>
-            <field name="description">Percepcion IVA</field>
-            <field name="rate" eval="Decimal('0.03')"/>
-            <field name="type">percentage</field>
+        <record model="account.tax.template" id="tax_nac_iva">
+            <field name="name">Percepción IVA</field>
+            <field name="description">Percepción de IVA</field>
+            <field name="type">none</field>
             <field name="invoice_account" ref="percepcion_iva"/>
             <field name="credit_note_account" ref="percepcion_iva"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="grupo_nacional_compra"/>
+            <field name="group" ref="group_nac_compra"/>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva">
-            <field name="name">Liquidacion IVA</field>
-            <field name="code">IVA</field>
+<!-- Tax Code Template -->
+
+        <!-- Libro IVA Ventas -->
+        <record model="account.tax.code.template" id="code_iva_venta">
+            <field name="name">Libro IVA Ventas</field>
             <field name="account" ref="root_ar"/>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_venta">
-            <field name="name">IVA Ventas</field>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_nogravado">
+            <field name="name">Conceptos no gravados</field>
+            <field name="parent" ref="code_iva_venta"/>
             <field name="account" ref="root_ar"/>
         </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta_liquidado_base">
-            <field name="name">Base imponible</field>
-            <field name="parent" ref="vat_code_iva_venta"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta0_base">
-            <field name="name">IVA 0</field>
-            <field name="code">03</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_base"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta0_base-iva0-invoice">
-            <field name="code" ref="vat_code_iva_venta0_base"/>
-            <field name="tax" ref="vat_0_ventas"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_nogravado-invoice">
+            <field name="code" ref="code_iva_venta_nogravado"/>
+            <field name="tax" ref="tax_iva_venta_nogravado"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta0_base-iva0-credit">
-            <field name="code" ref="vat_code_iva_venta0_base"/>
-            <field name="tax" ref="vat_0_ventas"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_nogravado-credit">
+            <field name="code" ref="code_iva_venta_nogravado"/>
+            <field name="tax" ref="tax_iva_venta_nogravado"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_venta105_base">
-            <field name="name">IVA 10.5</field>
-            <field name="code">04</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_base"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_exento">
+            <field name="name">Operaciones exentas</field>
+            <field name="parent" ref="code_iva_venta"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta105_base-iva105-invoice">
-            <field name="code" ref="vat_code_iva_venta105_base"/>
-            <field name="tax" ref="vat_105_ventas"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_exento-invoice">
+            <field name="code" ref="code_iva_venta_exento"/>
+            <field name="tax" ref="tax_iva_venta_exento"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta105_base-iva105-credit">
-            <field name="code" ref="vat_code_iva_venta105_base"/>
-            <field name="tax" ref="vat_105_ventas"/>
-            <field name="operator">-</field>
-            <field name="amount">base</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta21_base">
-            <field name="name">IVA 21</field>
-            <field name="code">05</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_base"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta21_base-iva21-invoice">
-            <field name="code" ref="vat_code_iva_venta21_base"/>
-            <field name="tax" ref="vat_21_ventas"/>
-            <field name="operator">+</field>
-            <field name="amount">base</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta21_base-iva21-credit">
-            <field name="code" ref="vat_code_iva_venta21_base"/>
-            <field name="tax" ref="vat_21_ventas"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_exento-credit">
+            <field name="code" ref="code_iva_venta_exento"/>
+            <field name="tax" ref="tax_iva_venta_exento"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_venta27_base">
-            <field name="name">IVA 27</field>
-            <field name="code">06</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_base"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_gravado">
+            <field name="name">Neto gravado</field>
+            <field name="parent" ref="code_iva_venta"/>
             <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta27_base-iva27-invoice">
-            <field name="code" ref="vat_code_iva_venta27_base"/>
-            <field name="tax" ref="vat_27_ventas"/>
-            <field name="operator">+</field>
-            <field name="amount">base</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta27_base-iva27-credit">
-            <field name="code" ref="vat_code_iva_venta27_base"/>
-            <field name="tax" ref="vat_27_ventas"/>
-            <field name="operator">-</field>
-            <field name="amount">base</field>
-            <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_venta05_base">
-            <field name="name">IVA 5</field>
-            <field name="code">08</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_base"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_gravado_000">
+            <field name="name">Neto 0%</field>
+            <field name="parent" ref="code_iva_venta_gravado"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta05_base-iva05-invoice">
-            <field name="code" ref="vat_code_iva_venta05_base"/>
-            <field name="tax" ref="vat_05_ventas"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_000-invoice">
+            <field name="code" ref="code_iva_venta_gravado_000"/>
+            <field name="tax" ref="tax_iva_venta_000"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta05_base-iva05-credit">
-            <field name="code" ref="vat_code_iva_venta05_base"/>
-            <field name="tax" ref="vat_05_ventas"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_000-credit">
+            <field name="code" ref="code_iva_venta_gravado_000"/>
+            <field name="tax" ref="tax_iva_venta_000"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_venta025_base">
-            <field name="name">IVA 2.5</field>
-            <field name="code">09</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_base"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_gravado_025">
+            <field name="name">Neto 2,5%</field>
+            <field name="parent" ref="code_iva_venta_gravado"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta025_base-iva025-invoice">
-            <field name="code" ref="vat_code_iva_venta025_base"/>
-            <field name="tax" ref="vat_025_ventas"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_025-invoice">
+            <field name="code" ref="code_iva_venta_gravado_025"/>
+            <field name="tax" ref="tax_iva_venta_025"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta025_base-iva025-credit">
-            <field name="code" ref="vat_code_iva_venta025_base"/>
-            <field name="tax" ref="vat_025_ventas"/>
-            <field name="operator">-</field>
-            <field name="amount">base</field>
-            <field name="type">credit</field>
-        </record>
-
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta_liquidado_tax">
-            <field name="name">Total liquidado</field>
-            <field name="parent" ref="vat_code_iva_venta"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta0_tax">
-            <field name="name">IVA 0</field>
-            <field name="code">03</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_base"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta0_tax-iva0-invoice">
-            <field name="code" ref="vat_code_iva_venta0_tax"/>
-            <field name="tax" ref="vat_0_ventas"/>
-            <field name="operator">+</field>
-            <field name="amount">tax</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta0_tax-iva0-credit">
-            <field name="code" ref="vat_code_iva_venta0_tax"/>
-            <field name="tax" ref="vat_0_ventas"/>
-            <field name="operator">-</field>
-            <field name="amount">tax</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta105_tax">
-            <field name="name">IVA 10.5</field>
-            <field name="code">04</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_tax"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta105_tax-iva105-invoice">
-            <field name="code" ref="vat_code_iva_venta105_tax"/>
-            <field name="tax" ref="vat_105_ventas"/>
-            <field name="operator">+</field>
-            <field name="amount">tax</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta105_tax-iva105-credit">
-            <field name="code" ref="vat_code_iva_venta105_tax"/>
-            <field name="tax" ref="vat_105_ventas"/>
-            <field name="operator">-</field>
-            <field name="amount">tax</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta21_tax">
-            <field name="name">IVA 21</field>
-            <field name="code">05</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_tax"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta21_tax-iva21-invoice">
-            <field name="code" ref="vat_code_iva_venta21_tax"/>
-            <field name="tax" ref="vat_21_ventas"/>
-            <field name="operator">+</field>
-            <field name="amount">tax</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta21_tax-iva21-credit">
-            <field name="code" ref="vat_code_iva_venta21_tax"/>
-            <field name="tax" ref="vat_21_ventas"/>
-            <field name="operator">-</field>
-            <field name="amount">tax</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta27_tax">
-            <field name="name">IVA 27</field>
-            <field name="code">06</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_tax"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta27_tax-iva27-invoice">
-            <field name="code" ref="vat_code_iva_venta27_tax"/>
-            <field name="tax" ref="vat_27_ventas"/>
-            <field name="operator">+</field>
-            <field name="amount">tax</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta27_tax-iva27-credit">
-            <field name="code" ref="vat_code_iva_venta27_tax"/>
-            <field name="tax" ref="vat_27_ventas"/>
-            <field name="operator">-</field>
-            <field name="amount">tax</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta05_tax">
-            <field name="name">IVA 5</field>
-            <field name="code">08</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_tax"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta05_tax-iva05-invoice">
-            <field name="code" ref="vat_code_iva_venta05_tax"/>
-            <field name="tax" ref="vat_05_ventas"/>
-            <field name="operator">+</field>
-            <field name="amount">tax</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta05_tax-iva05-credit">
-            <field name="code" ref="vat_code_iva_venta05_tax"/>
-            <field name="tax" ref="vat_05_ventas"/>
-            <field name="operator">-</field>
-            <field name="amount">tax</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_venta025_tax">
-            <field name="name">IVA 2.5</field>
-            <field name="code">09</field>
-            <field name="parent" ref="vat_code_iva_venta_liquidado_tax"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta025_tax-iva025-invoice">
-            <field name="code" ref="vat_code_iva_venta025_tax"/>
-            <field name="tax" ref="vat_025_ventas"/>
-            <field name="operator">+</field>
-            <field name="amount">tax</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_venta025_tax-iva025-credit">
-            <field name="code" ref="vat_code_iva_venta025_tax"/>
-            <field name="tax" ref="vat_025_ventas"/>
-            <field name="operator">-</field>
-            <field name="amount">tax</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_compras">
-            <field name="name">IVA Compras</field>
-            <field name="account" ref="root_ar"/>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_compras_liquidado_base">
-            <field name="name">Base imponible</field>
-            <field name="parent" ref="vat_code_iva_compras"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_compras0_base">
-            <field name="name">IVA 0</field>
-            <field name="code">03</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_base"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras0_base-iva0-invoice">
-            <field name="code" ref="vat_code_iva_compras0_base"/>
-            <field name="tax" ref="vat_0_compras"/>
-            <field name="operator">+</field>
-            <field name="amount">base</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras0_base-iva0-credit">
-            <field name="code" ref="vat_code_iva_compras0_base"/>
-            <field name="tax" ref="vat_0_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_025-credit">
+            <field name="code" ref="code_iva_venta_gravado_025"/>
+            <field name="tax" ref="tax_iva_venta_025"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras105_base">
-            <field name="name">IVA 10.5</field>
-            <field name="code">04</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_base"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_gravado_050">
+            <field name="name">Neto 5%</field>
+            <field name="parent" ref="code_iva_venta_gravado"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras105_base-iva105-invoice">
-            <field name="code" ref="vat_code_iva_compras105_base"/>
-            <field name="tax" ref="vat_105_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_050-invoice">
+            <field name="code" ref="code_iva_venta_gravado_050"/>
+            <field name="tax" ref="tax_iva_venta_050"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras105_base-iva105-credit">
-            <field name="code" ref="vat_code_iva_compras105_base"/>
-            <field name="tax" ref="vat_105_compras"/>
-            <field name="operator">-</field>
-            <field name="amount">base</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_compras21_base">
-            <field name="name">IVA 21</field>
-            <field name="code">05</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_base"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras21_base-iva21-invoice">
-            <field name="code" ref="vat_code_iva_compras21_base"/>
-            <field name="tax" ref="vat_21_compras"/>
-            <field name="operator">+</field>
-            <field name="amount">base</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras21_base-iva21-credit">
-            <field name="code" ref="vat_code_iva_compras21_base"/>
-            <field name="tax" ref="vat_21_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_050-credit">
+            <field name="code" ref="code_iva_venta_gravado_050"/>
+            <field name="tax" ref="tax_iva_venta_050"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras27_base">
-            <field name="name">IVA 27</field>
-            <field name="code">06</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_base"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_gravado_105">
+            <field name="name">Neto 10,5%</field>
+            <field name="parent" ref="code_iva_venta_gravado"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras27_base-iva27-invoice">
-            <field name="code" ref="vat_code_iva_compras27_base"/>
-            <field name="tax" ref="vat_27_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_105-invoice">
+            <field name="code" ref="code_iva_venta_gravado_105"/>
+            <field name="tax" ref="tax_iva_venta_105"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras27_base-iva27-credit">
-            <field name="code" ref="vat_code_iva_compras27_base"/>
-            <field name="tax" ref="vat_27_compras"/>
-            <field name="operator">-</field>
-            <field name="amount">base</field>
-            <field name="type">credit</field>
-        </record>
-
-        <record model="account.tax.code.template" id="vat_code_iva_compras05_base">
-            <field name="name">IVA 5</field>
-            <field name="code">08</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_base"/>
-            <field name="account" ref="root_ar"/>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras05_base-iva05-invoice">
-            <field name="code" ref="vat_code_iva_compras05_base"/>
-            <field name="tax" ref="vat_05_compras"/>
-            <field name="operator">+</field>
-            <field name="amount">base</field>
-            <field name="type">invoice</field>
-        </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras05_base-iva05-credit">
-            <field name="code" ref="vat_code_iva_compras05_base"/>
-            <field name="tax" ref="vat_05_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_105-credit">
+            <field name="code" ref="code_iva_venta_gravado_105"/>
+            <field name="tax" ref="tax_iva_venta_105"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras025_base">
-            <field name="name">IVA 2.5</field>
-            <field name="code">09</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_base"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_gravado_210">
+            <field name="name">Neto 21%</field>
+            <field name="parent" ref="code_iva_venta_gravado"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras025_base-iva025-invoice">
-            <field name="code" ref="vat_code_iva_compras025_base"/>
-            <field name="tax" ref="vat_025_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_210-invoice">
+            <field name="code" ref="code_iva_venta_gravado_210"/>
+            <field name="tax" ref="tax_iva_venta_210"/>
             <field name="operator">+</field>
             <field name="amount">base</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras025_base-iva025-credit">
-            <field name="code" ref="vat_code_iva_compras025_base"/>
-            <field name="tax" ref="vat_025_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_210-credit">
+            <field name="code" ref="code_iva_venta_gravado_210"/>
+            <field name="tax" ref="tax_iva_venta_210"/>
             <field name="operator">-</field>
             <field name="amount">base</field>
             <field name="type">credit</field>
         </record>
 
+        <record model="account.tax.code.template"
+            id="code_iva_venta_gravado_270">
+            <field name="name">Neto 27%</field>
+            <field name="parent" ref="code_iva_venta_gravado"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_270-invoice">
+            <field name="code" ref="code_iva_venta_gravado_270"/>
+            <field name="tax" ref="tax_iva_venta_270"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_gravado_270-credit">
+            <field name="code" ref="code_iva_venta_gravado_270"/>
+            <field name="tax" ref="tax_iva_venta_270"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras_liquidado_tax">
-            <field name="name">Total liquidado</field>
-            <field name="parent" ref="vat_code_iva_compras"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_iva">
+            <field name="name">IVA</field>
+            <field name="parent" ref="code_iva_venta"/>
             <field name="account" ref="root_ar"/>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras0_tax">
-            <field name="name">IVA 0</field>
-            <field name="code">03</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_tax"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_iva_000">
+            <field name="name">IVA 0%</field>
+            <field name="parent" ref="code_iva_venta_iva"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras0_tax-iva0-invoice">
-            <field name="code" ref="vat_code_iva_compras0_tax"/>
-            <field name="tax" ref="vat_0_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_000-invoice">
+            <field name="code" ref="code_iva_venta_iva_000"/>
+            <field name="tax" ref="tax_iva_venta_000"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras0_tax-iva0-credit">
-            <field name="code" ref="vat_code_iva_compras0_tax"/>
-            <field name="tax" ref="vat_0_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_000-credit">
+            <field name="code" ref="code_iva_venta_iva_000"/>
+            <field name="tax" ref="tax_iva_venta_000"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras105_tax">
-            <field name="name">IVA 10.5</field>
-            <field name="code">04</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_tax"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_iva_025">
+            <field name="name">IVA 2,5%</field>
+            <field name="parent" ref="code_iva_venta_iva"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras105_tax-iva105-invoice">
-            <field name="code" ref="vat_code_iva_compras105_tax"/>
-            <field name="tax" ref="vat_105_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_025-invoice">
+            <field name="code" ref="code_iva_venta_iva_025"/>
+            <field name="tax" ref="tax_iva_venta_025"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras105_tax-iva105-credit">
-            <field name="code" ref="vat_code_iva_compras105_tax"/>
-            <field name="tax" ref="vat_105_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_025-credit">
+            <field name="code" ref="code_iva_venta_iva_025"/>
+            <field name="tax" ref="tax_iva_venta_025"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras21_tax">
-            <field name="name">IVA 21</field>
-            <field name="code">05</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_tax"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_iva_050">
+            <field name="name">IVA 5%</field>
+            <field name="parent" ref="code_iva_venta_iva"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras21_tax-iva21-invoice">
-            <field name="code" ref="vat_code_iva_compras21_tax"/>
-            <field name="tax" ref="vat_21_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_050-invoice">
+            <field name="code" ref="code_iva_venta_iva_050"/>
+            <field name="tax" ref="tax_iva_venta_050"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras21_tax-iva21-credit">
-            <field name="code" ref="vat_code_iva_compras21_tax"/>
-            <field name="tax" ref="vat_21_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_050-credit">
+            <field name="code" ref="code_iva_venta_iva_050"/>
+            <field name="tax" ref="tax_iva_venta_050"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras27_tax">
-            <field name="name">IVA 27</field>
-            <field name="code">06</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_tax"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_iva_105">
+            <field name="name">IVA 10,5%</field>
+            <field name="parent" ref="code_iva_venta_iva"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras27_tax-iva27-invoice">
-            <field name="code" ref="vat_code_iva_compras27_tax"/>
-            <field name="tax" ref="vat_27_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_105-invoice">
+            <field name="code" ref="code_iva_venta_iva_105"/>
+            <field name="tax" ref="tax_iva_venta_105"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras27_tax-iva27-credit">
-            <field name="code" ref="vat_code_iva_compras27_tax"/>
-            <field name="tax" ref="vat_27_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_105-credit">
+            <field name="code" ref="code_iva_venta_iva_105"/>
+            <field name="tax" ref="tax_iva_venta_105"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras05_tax">
-            <field name="name">IVA 5</field>
-            <field name="code">08</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_tax"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_iva_210">
+            <field name="name">IVA 21%</field>
+            <field name="parent" ref="code_iva_venta_iva"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras05_tax-iva05-invoice">
-            <field name="code" ref="vat_code_iva_compras05_tax"/>
-            <field name="tax" ref="vat_05_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_210-invoice">
+            <field name="code" ref="code_iva_venta_iva_210"/>
+            <field name="tax" ref="tax_iva_venta_210"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras05_tax-iva05-credit">
-            <field name="code" ref="vat_code_iva_compras05_tax"/>
-            <field name="tax" ref="vat_05_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_210-credit">
+            <field name="code" ref="code_iva_venta_iva_210"/>
+            <field name="tax" ref="tax_iva_venta_210"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="vat_code_iva_compras025_tax">
-            <field name="name">IVA 2.5</field>
-            <field name="code">09</field>
-            <field name="parent" ref="vat_code_iva_compras_liquidado_tax"/>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_iva_270">
+            <field name="name">IVA 27%</field>
+            <field name="parent" ref="code_iva_venta_iva"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras025_tax-iva025-invoice">
-            <field name="code" ref="vat_code_iva_compras025_tax"/>
-            <field name="tax" ref="vat_025_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_270-invoice">
+            <field name="code" ref="code_iva_venta_iva_270"/>
+            <field name="tax" ref="tax_iva_venta_270"/>
             <field name="operator">+</field>
             <field name="amount">tax</field>
             <field name="type">invoice</field>
         </record>
-        <record model="account.tax.code.line.template" id="vat_code_iva_compras025_tax-iva025-credit">
-            <field name="code" ref="vat_code_iva_compras025_tax"/>
-            <field name="tax" ref="vat_025_compras"/>
+        <record model="account.tax.code.line.template"
+            id="code_iva_venta_iva_270-credit">
+            <field name="code" ref="code_iva_venta_iva_270"/>
+            <field name="tax" ref="tax_iva_venta_270"/>
             <field name="operator">-</field>
             <field name="amount">tax</field>
             <field name="type">credit</field>
         </record>
 
-        <record model="account.tax.code.template" id="code_nacional">
-            <field name="name">Nacional</field>
-            <field name="code">Nacional</field>
+        <record model="account.tax.code.template"
+            id="code_iva_venta_tributo">
+            <field name="name">Otros tributos</field>
+            <field name="parent" ref="code_iva_venta"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.template" id="code_provincial">
-            <field name="name">Provincial</field>
-            <field name="code">Provincial</field>
+
+        <record model="account.tax.code.template"
+            id="code_iva_venta_tributo_nac">
+            <field name="name">Nacionales</field>
+            <field name="parent" ref="code_iva_venta_tributo"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.template" id="code_municipal">
-            <field name="name">Municipal</field>
-            <field name="code">Municipal</field>
+
+        <record model="account.tax.code.template"
+            id="code_iva_venta_tributo_prov">
+            <field name="name">Provinciales</field>
+            <field name="parent" ref="code_iva_venta_tributo"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.template" id="code_interno">
-            <field name="name">Interno</field>
-            <field name="code">Interno</field>
+
+        <record model="account.tax.code.template"
+            id="code_iva_venta_tributo_muni">
+            <field name="name">Municipales</field>
+            <field name="parent" ref="code_iva_venta_tributo"/>
             <field name="account" ref="root_ar"/>
         </record>
-        <record model="account.tax.code.template" id="code_other">
-            <field name="name">Other</field>
-            <field name="code">Other</field>
+
+        <record model="account.tax.code.template"
+            id="code_iva_venta_tributo_int">
+            <field name="name">Internos</field>
+            <field name="parent" ref="code_iva_venta_tributo"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_venta_tributo_otro">
+            <field name="name">Otros</field>
+            <field name="parent" ref="code_iva_venta_tributo"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <!-- Libro IVA Compras -->
+        <record model="account.tax.code.template" id="code_iva_compra">
+            <field name="name">Libro IVA Compras</field>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_nogravado">
+            <field name="name">Conceptos no gravados</field>
+            <field name="parent" ref="code_iva_compra"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_nogravado-invoice">
+            <field name="code" ref="code_iva_compra_nogravado"/>
+            <field name="tax" ref="tax_iva_compra_nogravado"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_nogravado-credit">
+            <field name="code" ref="code_iva_compra_nogravado"/>
+            <field name="tax" ref="tax_iva_compra_nogravado"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_exento">
+            <field name="name">Operaciones exentas</field>
+            <field name="parent" ref="code_iva_compra"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_exento-invoice">
+            <field name="code" ref="code_iva_compra_exento"/>
+            <field name="tax" ref="tax_iva_compra_exento"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_exento-credit">
+            <field name="code" ref="code_iva_compra_exento"/>
+            <field name="tax" ref="tax_iva_compra_exento"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_gravado">
+            <field name="name">Neto gravado</field>
+            <field name="parent" ref="code_iva_compra"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_gravado_000">
+            <field name="name">Neto 0%</field>
+            <field name="parent" ref="code_iva_compra_gravado"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_000-invoice">
+            <field name="code" ref="code_iva_compra_gravado_000"/>
+            <field name="tax" ref="tax_iva_compra_000"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_000-credit">
+            <field name="code" ref="code_iva_compra_gravado_000"/>
+            <field name="tax" ref="tax_iva_compra_000"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_gravado_025">
+            <field name="name">Neto 2,5%</field>
+            <field name="parent" ref="code_iva_compra_gravado"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_025-invoice">
+            <field name="code" ref="code_iva_compra_gravado_025"/>
+            <field name="tax" ref="tax_iva_compra_025"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_025-credit">
+            <field name="code" ref="code_iva_compra_gravado_025"/>
+            <field name="tax" ref="tax_iva_compra_025"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_gravado_050">
+            <field name="name">Neto 5%</field>
+            <field name="parent" ref="code_iva_compra_gravado"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_050-invoice">
+            <field name="code" ref="code_iva_compra_gravado_050"/>
+            <field name="tax" ref="tax_iva_compra_050"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_050-credit">
+            <field name="code" ref="code_iva_compra_gravado_050"/>
+            <field name="tax" ref="tax_iva_compra_050"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_gravado_105">
+            <field name="name">Neto 10,5%</field>
+            <field name="parent" ref="code_iva_compra_gravado"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_105-invoice">
+            <field name="code" ref="code_iva_compra_gravado_105"/>
+            <field name="tax" ref="tax_iva_compra_105"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_105-credit">
+            <field name="code" ref="code_iva_compra_gravado_105"/>
+            <field name="tax" ref="tax_iva_compra_105"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_gravado_210">
+            <field name="name">Neto 21%</field>
+            <field name="parent" ref="code_iva_compra_gravado"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_210-invoice">
+            <field name="code" ref="code_iva_compra_gravado_210"/>
+            <field name="tax" ref="tax_iva_compra_210"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_210-credit">
+            <field name="code" ref="code_iva_compra_gravado_210"/>
+            <field name="tax" ref="tax_iva_compra_210"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_gravado_270">
+            <field name="name">Neto 27%</field>
+            <field name="parent" ref="code_iva_compra_gravado"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_270-invoice">
+            <field name="code" ref="code_iva_compra_gravado_270"/>
+            <field name="tax" ref="tax_iva_compra_270"/>
+            <field name="operator">+</field>
+            <field name="amount">base</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_gravado_270-credit">
+            <field name="code" ref="code_iva_compra_gravado_270"/>
+            <field name="tax" ref="tax_iva_compra_270"/>
+            <field name="operator">-</field>
+            <field name="amount">base</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_iva">
+            <field name="name">IVA</field>
+            <field name="parent" ref="code_iva_compra"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_iva_000">
+            <field name="name">IVA 0%</field>
+            <field name="parent" ref="code_iva_compra_iva"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_000-invoice">
+            <field name="code" ref="code_iva_compra_iva_000"/>
+            <field name="tax" ref="tax_iva_compra_000"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_000-credit">
+            <field name="code" ref="code_iva_compra_iva_000"/>
+            <field name="tax" ref="tax_iva_compra_000"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_iva_025">
+            <field name="name">IVA 2,5%</field>
+            <field name="parent" ref="code_iva_compra_iva"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_025-invoice">
+            <field name="code" ref="code_iva_compra_iva_025"/>
+            <field name="tax" ref="tax_iva_compra_025"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_025-credit">
+            <field name="code" ref="code_iva_compra_iva_025"/>
+            <field name="tax" ref="tax_iva_compra_025"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_iva_050">
+            <field name="name">IVA 5%</field>
+            <field name="parent" ref="code_iva_compra_iva"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_050-invoice">
+            <field name="code" ref="code_iva_compra_iva_050"/>
+            <field name="tax" ref="tax_iva_compra_050"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_050-credit">
+            <field name="code" ref="code_iva_compra_iva_050"/>
+            <field name="tax" ref="tax_iva_compra_050"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_iva_105">
+            <field name="name">IVA 10,5%</field>
+            <field name="parent" ref="code_iva_compra_iva"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_105-invoice">
+            <field name="code" ref="code_iva_compra_iva_105"/>
+            <field name="tax" ref="tax_iva_compra_105"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_105-credit">
+            <field name="code" ref="code_iva_compra_iva_105"/>
+            <field name="tax" ref="tax_iva_compra_105"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_iva_210">
+            <field name="name">IVA 21%</field>
+            <field name="parent" ref="code_iva_compra_iva"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_210-invoice">
+            <field name="code" ref="code_iva_compra_iva_210"/>
+            <field name="tax" ref="tax_iva_compra_210"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_210-credit">
+            <field name="code" ref="code_iva_compra_iva_210"/>
+            <field name="tax" ref="tax_iva_compra_210"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_iva_270">
+            <field name="name">IVA 27%</field>
+            <field name="parent" ref="code_iva_compra_iva"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_270-invoice">
+            <field name="code" ref="code_iva_compra_iva_270"/>
+            <field name="tax" ref="tax_iva_compra_270"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_iva_270-credit">
+            <field name="code" ref="code_iva_compra_iva_270"/>
+            <field name="tax" ref="tax_iva_compra_270"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_tributo">
+            <field name="name">Otros tributos</field>
+            <field name="parent" ref="code_iva_compra"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_tributo_nac">
+            <field name="name">Nacionales</field>
+            <field name="parent" ref="code_iva_compra_tributo"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_tributo_nac_iva">
+            <field name="name">Percepción IVA</field>
+            <field name="parent" ref="code_iva_compra_tributo_nac"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_tributo_nac_iva-invoice">
+            <field name="code" ref="code_iva_compra_tributo_nac_iva"/>
+            <field name="tax" ref="tax_nac_iva"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_tributo_nac_iva-credit">
+            <field name="code" ref="code_iva_compra_tributo_nac_iva"/>
+            <field name="tax" ref="tax_nac_iva"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_tributo_prov">
+            <field name="name">Provinciales</field>
+            <field name="parent" ref="code_iva_compra_tributo"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_tributo_prov_iibb">
+            <field name="name">Percepción IIBB</field>
+            <field name="parent" ref="code_iva_compra_tributo_prov"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_tributo_prov_iibb-invoice">
+            <field name="code" ref="code_iva_compra_tributo_prov_iibb"/>
+            <field name="tax" ref="tax_prov_iibb"/>
+            <field name="operator">+</field>
+            <field name="amount">tax</field>
+            <field name="type">invoice</field>
+        </record>
+        <record model="account.tax.code.line.template"
+            id="code_iva_compra_tributo_prov_iibb-credit">
+            <field name="code" ref="code_iva_compra_tributo_prov_iibb"/>
+            <field name="tax" ref="tax_prov_iibb"/>
+            <field name="operator">-</field>
+            <field name="amount">tax</field>
+            <field name="type">credit</field>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_tributo_muni">
+            <field name="name">Municipales</field>
+            <field name="parent" ref="code_iva_compra_tributo"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_tributo_int">
+            <field name="name">Internos</field>
+            <field name="parent" ref="code_iva_compra_tributo"/>
+            <field name="account" ref="root_ar"/>
+        </record>
+
+        <record model="account.tax.code.template"
+            id="code_iva_compra_tributo_otro">
+            <field name="name">Otros</field>
+            <field name="parent" ref="code_iva_compra_tributo"/>
             <field name="account" ref="root_ar"/>
         </record>
 
