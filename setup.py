@@ -22,7 +22,7 @@ def read(fname):
 
 def get_require_version(name):
     if name in LINKS:
-        return '%s @ %s' % (name, LINKS[name])
+        return '%s@%s' % (name, LINKS[name])
     if minor_version % 2:
         require = '%s >= %s.%s.dev0, < %s.%s'
     else:
@@ -42,9 +42,13 @@ version = info.get('version', '0.0.1')
 major_version, minor_version, _ = version.split('.', 2)
 major_version = int(major_version)
 minor_version = int(minor_version)
+series = '%s.%s' % (major_version, minor_version)
+if minor_version % 2:
+    branch = 'master'
+else:
+    branch = series
 
-download_url = 'https://github.com/tryton-ar/account_ar/tree/%s.%s' % (
-    major_version, minor_version)
+download_url = 'https://github.com/tryton-ar/account_ar/tree/%s' % branch
 
 LINKS = {}
 
