@@ -12,12 +12,16 @@ class TaxGroup(metaclass=PoolMeta):
 
     tribute_id = fields.Char("Tribute ID",
         states={
-            'invisible': Eval('afip_kind') == 'gravado',
-            'required': Eval('afip_kind') != 'gravado',
+            'invisible': Eval('afip_kind').in_([
+                'gravado', 'no_gravado', 'exento']),
+            'required': ~Eval('afip_kind').in_([
+                'gravado', 'no_gravado', 'exento']),
             },
         depends=['afip_kind'])
     afip_kind = fields.Selection([
         ('gravado', 'Gravado'),
+        ('no_gravado', 'No gravado'),
+        ('exento', 'Exento'),
         ('nacional', 'Nacional'),
         ('provincial', 'Provincial'),
         ('municipal', 'Municipal'),
