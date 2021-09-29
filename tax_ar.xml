@@ -18,6 +18,34 @@
             <field name="afip_kind">gravado</field>
         </record>
 
+        <record model="account.tax.group" id="group_iva_venta_no_gravado">
+            <field name="name">IVA Ventas No gravado</field>
+            <field name="code">IVA</field>
+            <field name="kind">sale</field>
+            <field name="afip_kind">no_gravado</field>
+        </record>
+
+        <record model="account.tax.group" id="group_iva_compra_no_gravado">
+            <field name="name">IVA Compras No gravado</field>
+            <field name="code">IVA</field>
+            <field name="kind">purchase</field>
+            <field name="afip_kind">no_gravado</field>
+        </record>
+
+        <record model="account.tax.group" id="group_iva_venta_exento">
+            <field name="name">IVA Ventas Exento</field>
+            <field name="code">IVA</field>
+            <field name="kind">sale</field>
+            <field name="afip_kind">exento</field>
+        </record>
+
+        <record model="account.tax.group" id="group_iva_compra_exento">
+            <field name="name">IVA Compras Exento</field>
+            <field name="code">IVA</field>
+            <field name="kind">purchase</field>
+            <field name="afip_kind">exento</field>
+        </record>
+
         <record model="account.tax.group" id="group_nac_venta">
             <field name="name">Percepciones nacionales Ventas</field>
             <field name="code">nacional</field>
@@ -100,7 +128,7 @@
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="group_iva_venta"/>
+            <field name="group" ref="group_iva_venta_no_gravado"/>
             <field name="iva_code">1</field>
         </record>
 
@@ -112,7 +140,7 @@
             <field name="invoice_account" ref="iva_debito_fiscal"/>
             <field name="credit_note_account" ref="iva_debito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="group_iva_venta"/>
+            <field name="group" ref="group_iva_venta_exento"/>
             <field name="iva_code">2</field>
         </record>
 
@@ -196,7 +224,7 @@
             <field name="invoice_account" ref="iva_credito_fiscal"/>
             <field name="credit_note_account" ref="iva_credito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="group_iva_compra"/>
+            <field name="group" ref="group_iva_compra_no_gravado"/>
             <field name="iva_code">1</field>
         </record>
 
@@ -208,7 +236,7 @@
             <field name="invoice_account" ref="iva_credito_fiscal"/>
             <field name="credit_note_account" ref="iva_credito_fiscal"/>
             <field name="account" ref="root_ar"/>
-            <field name="group" ref="group_iva_compra"/>
+            <field name="group" ref="group_iva_compra_exento"/>
             <field name="iva_code">2</field>
         </record>
 
