@@ -19,6 +19,10 @@ msgid "IVA Code"
 msgstr "Código IVA"
 
 msgctxt "selection:account.tax.group,afip_kind:"
+msgid "Exento"
+msgstr "Exento"
+
+msgctxt "selection:account.tax.group,afip_kind:"
 msgid "Gravado"
 msgstr "Gravado"
 
@@ -33,6 +37,10 @@ msgstr "Municipal"
 msgctxt "selection:account.tax.group,afip_kind:"
 msgid "Nacional"
 msgstr "Nacional"
+
+msgctxt "selection:account.tax.group,afip_kind:"
+msgid "No gravado"
+msgstr "No gravado"
 
 msgctxt "selection:account.tax.group,afip_kind:"
 msgid "Other"
