@@ -2,9 +2,10 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 
-from trytond.model import fields
+from trytond.model import fields, Unique
 from trytond.pool import PoolMeta
 from trytond.pyson import Eval, Bool
+from trytond.transaction import Transaction
 
 
 class TaxGroup(metaclass=PoolMeta):
@@ -56,3 +57,35 @@ class Tax(metaclass=PoolMeta):
     def __setup__(cls):
         super().__setup__()
         cls.group.required = True
+
+
+class Account(metaclass=PoolMeta):
+    __name__ = 'account.account'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        t = cls.__table__()
+        cursor = Transaction().connection.cursor()
+        cursor.execute('SELECT code '
+            'FROM "' + cls._table + '" '
+            'GROUP BY code '
+            'HAVING COUNT(*) > 1')
+        if not cursor.fetchall():
+            cls._sql_constraints += [
+                ('company_code_uniq', Unique(t, t.company, t.code),
+                    'account_ar.msg_account_company_code_unique'),
+                ]
+
+    @classmethod
+    def copy(cls, records, default=None):
+        if default is None:
+            default = {}
+        current_default = default.copy()
+
+        new_records = []
+        for record in records:
+            current_default['code'] = '%s (copy)' % record.code
+            new_record, = super().copy([record], default=current_default)
+            new_records.append(new_record)
+        return new_records
