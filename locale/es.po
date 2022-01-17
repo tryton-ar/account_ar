@@ -18,6 +18,10 @@ msgctxt "field:account.tax.template,iva_code:"
 msgid "IVA Code"
 msgstr "Código IVA"
 
+msgctxt "model:ir.message,text:msg_account_company_code_unique"
+msgid "Account code already exists."
+msgstr "El código de la cuenta ya existe."
+
 msgctxt "selection:account.tax.group,afip_kind:"
 msgid "Exento"
 msgstr "Exento"

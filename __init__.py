@@ -11,4 +11,5 @@ def register():
         account.TaxTemplate,
         account.Tax,
         account.TaxGroup,
+        account.Account,
         module='account_ar', type_='model')
