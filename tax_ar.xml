@@ -110,6 +110,14 @@
             <field name="tribute_id">4</field>
         </record>
 
+        <record model="account.tax.group" id="group_a_cuenta_del_iva_compra">
+            <field name="name">Importe de percepciones o pagos a cuenta del IVA (Compras)</field>
+            <field name="code">a cuenta del iva</field>
+            <field name="kind">purchase</field>
+            <field name="afip_kind">a_cuenta_del_iva</field>
+            <field name="tribute_id">12</field>
+        </record>
+
         <record model="account.tax.group" id="group_otro">
             <field name="name">Otros tributos</field>
             <field name="code">otro</field>
