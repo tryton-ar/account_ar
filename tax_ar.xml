@@ -340,6 +340,16 @@
             <field name="group" ref="group_nac_compra"/>
         </record>
 
+        <record model="account.tax.template" id="tax_nac_iva_compra">
+            <field name="name">Percepción IVA (compras)</field>
+            <field name="description">Percepción de IVA</field>
+            <field name="type">none</field>
+            <field name="invoice_account" ref="percepcion_iva"/>
+            <field name="credit_note_account" ref="percepcion_iva"/>
+            <field name="account" ref="root_ar"/>
+            <field name="group" ref="group_a_cuenta_del_iva_compra"/>
+        </record>
+
 <!-- Tax Code Template -->
 
         <!-- Libro IVA Ventas -->
