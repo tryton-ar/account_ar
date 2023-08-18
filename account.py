@@ -27,6 +27,7 @@ class TaxGroup(metaclass=PoolMeta):
         ('provincial', 'Provincial'),
         ('municipal', 'Municipal'),
         ('interno', 'Interno'),
+        ('a_cuenta_del_iva', 'A cuenta del IVA'),
         ('other', 'Other'),
         ], 'AFIP Kind', required=True, sort=False)
 
