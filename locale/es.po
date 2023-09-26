@@ -2,6 +2,14 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.move.line,related_statement_line:"
+msgid "Statement Line"
+msgstr "Línea de extracto relacionada"
+
+msgctxt "field:account.statement.line,abs_amount:"
+msgid "Absolute Amount"
+msgstr "Importe absoluto"
+
 msgctxt "field:account.tax,iva_code:"
 msgid "IVA Code"
 msgstr "Código IVA"
