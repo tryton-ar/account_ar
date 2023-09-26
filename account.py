@@ -3,7 +3,7 @@
 # the full copyright notices and license terms.
 
 from trytond.model import fields, Unique
-from trytond.pool import PoolMeta
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval, Bool
 from trytond.transaction import Transaction
 
@@ -50,11 +50,31 @@ class Tax(metaclass=PoolMeta):
             'readonly': (Bool(Eval('template', -1))
                 & ~Eval('template_override', False)),
             })
+    afip_kind = fields.Function(fields.Selection(
+        '_get_afip_kinds', 'AFIP Kind'), 'get_afip_kind',
+        searcher='search_afip_kind')
 
     @classmethod
     def __setup__(cls):
         super().__setup__()
         cls.group.required = True
+
+    @classmethod
+    def _get_afip_kinds(cls):
+        pool = Pool()
+        TaxGroup = pool.get('account.tax.group')
+        return TaxGroup.fields_get(['afip_kind'])['afip_kind']['selection']
+
+    @classmethod
+    def get_afip_kind(cls, taxes, name):
+        result = {}
+        for t in taxes:
+            result[t.id] = getattr(t.group, 'afip_kind', None)
+        return result
+
+    @classmethod
+    def search_afip_kind(cls, name, clause):
+        return [('group.' + name,) + tuple(clause[1:])]
 
 
 class Account(metaclass=PoolMeta):
