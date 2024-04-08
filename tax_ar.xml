@@ -320,6 +320,7 @@
             <field name="credit_note_account" ref="percepciones_ingresos_brutos"/>
             <field name="account" ref="root_ar"/>
             <field name="group" ref="group_prov_compra"/>
+            <field name="perception_tax_code">iibb</field>
         </record>
 
         <record model="account.tax.template" id="tax_nac_iva">
@@ -330,6 +331,7 @@
             <field name="credit_note_account" ref="percepcion_iva"/>
             <field name="account" ref="root_ar"/>
             <field name="group" ref="group_nac_compra"/>
+            <field name="perception_tax_code">iva</field>
         </record>
 
 <!-- Tax Code Template -->

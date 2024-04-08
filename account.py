@@ -33,26 +33,39 @@ class TaxGroup(metaclass=PoolMeta):
 class TaxTemplate(metaclass=PoolMeta):
     __name__ = 'account.tax.template'
 
-    iva_code = fields.Char("IVA Code")
+    iva_code = fields.Char('IVA Code')
+    perception_tax_code = fields.Char('Tax Code (Perceptions)')
 
     def _get_tax_value(self, tax=None):
         value = super()._get_tax_value(tax=tax)
         if not tax or tax.iva_code != self.iva_code:
             value['iva_code'] = self.iva_code
+        if not tax or tax.perception_tax_code != self.perception_tax_code:
+            value['perception_tax_code'] = self.perception_tax_code
         return value
 
 
 class Tax(metaclass=PoolMeta):
     __name__ = 'account.tax'
 
-    iva_code = fields.Char("IVA Code",
-        states={
-            'readonly': (Bool(Eval('template', -1))
-                & ~Eval('template_override', False)),
-            })
     afip_kind = fields.Function(fields.Selection(
         '_get_afip_kinds', 'AFIP Kind'), 'get_afip_kind',
         searcher='search_afip_kind')
+    iva_code = fields.Char('IVA Code',
+        states={
+            'invisible': ~Eval('afip_kind').in_(
+                ['gravado', 'no_gravado', 'exento']),
+            'readonly': (Bool(Eval('template', -1))
+                & ~Eval('template_override', False)),
+            })
+    perception_tax_code = fields.Char('Tax Code (Perceptions)',
+        states={
+            'invisible': ~Eval('afip_kind').in_(
+                ['nacional', 'provincial', 'municipal']),
+            'readonly': (Bool(Eval('template', -1))
+                & ~Eval('template_override', False)),
+            },
+        help='Options: iva, gana, suss, iibb, otro')
 
     @classmethod
     def __setup__(cls):

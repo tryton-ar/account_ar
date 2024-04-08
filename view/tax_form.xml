@@ -4,6 +4,8 @@
         <page id="afip_code" string="AFIP Code">
             <label name="iva_code"/>
             <field name="iva_code"/>
+            <label name="perception_tax_code"/>
+            <field name="perception_tax_code"/>
         </page>
     </xpath>
 </data>
