@@ -18,6 +18,10 @@ msgctxt "field:account.tax,iva_code:"
 msgid "IVA Code"
 msgstr "Código IVA"
 
+msgctxt "field:account.tax,perception_tax_code:"
+msgid "Tax Code (Perceptions)"
+msgstr "Código Impuesto (Percepciones)"
+
 msgctxt "field:account.tax.group,afip_kind:"
 msgid "AFIP Kind"
 msgstr "Clase AFIP"
@@ -29,6 +33,14 @@ msgstr "ID Impuesto"
 msgctxt "field:account.tax.template,iva_code:"
 msgid "IVA Code"
 msgstr "Código IVA"
+
+msgctxt "field:account.tax.template,perception_tax_code:"
+msgid "Tax Code (Perceptions)"
+msgstr "Código Impuesto (Percepciones)"
+
+msgctxt "help:account.tax,perception_tax_code:"
+msgid "Options: iva, gana, suss, iibb, otro"
+msgstr "Opciones: iva, gana, suss, iibb, otro"
 
 msgctxt "model:ir.message,text:msg_account_company_code_unique"
 msgid "Account code already exists."

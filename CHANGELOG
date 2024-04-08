@@ -1,3 +1,6 @@
+Version 6.6.1 - 2024-04-08
+* Identify tax in national and provincial perceptions
+
 Version 6.6.0 - 2023-09-26
 * Bug fixes (see git logs for details)
 
@@ -11,9 +14,6 @@ Version 5.2.0 - 2020-07-22
 * Bug fixes (see git logs for details)
 
 Version 5.0.0 - 2018-12-21
-* Bug fixes (see git logs for details)
-
-Version 4.8.1 - 2018-12-21
 * Bug fixes (see git logs for details)
 
 Version 4.8.0 - 2018-09-30
