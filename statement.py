@@ -42,7 +42,7 @@ class StatementLine(metaclass=PoolMeta):
 
     abs_amount = fields.Function(Monetary(
         "Absolute Amount", currency='currency', digits='currency'),
-        'get_abs_amount')
+        'on_change_with_abs_amount')
 
     @classmethod
     def __setup__(cls):
@@ -63,7 +63,7 @@ class StatementLine(metaclass=PoolMeta):
             ]
 
     @fields.depends('amount')
-    def get_abs_amount(self, name=None):
+    def on_change_with_abs_amount(self, name=None):
         return abs(self.amount)
 
     @classmethod
