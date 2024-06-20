@@ -62,7 +62,7 @@ class StatementLine(metaclass=PoolMeta):
             ('debit', 'ASC'),
             ]
 
-    @fields.depends('amount')
+    @fields.depends('amount', 'origin')
     def on_change_with_abs_amount(self, name=None):
         return abs(self.amount)
 
@@ -90,6 +90,22 @@ class StatementLine(metaclass=PoolMeta):
             self.account = self.move_line.account
 
     @classmethod
+    def create(cls, vlist):
+        pool = Pool()
+        MoveLine = pool.get('account.move.line')
+
+        lines = super(StatementLine, cls).create(vlist)
+        to_update = {}
+        for line in lines:
+            if line.related_to and \
+                    str(line.related_to).split(',')[0] == MoveLine.__name__:
+                move_line_id = int(str(line.related_to).split(',')[1])
+                to_update[move_line_id] = line.id
+        if to_update:
+            cls.update_move_lines(to_update)
+        return lines
+
+    @classmethod
     def write(cls, *args):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
@@ -105,7 +121,8 @@ class StatementLine(metaclass=PoolMeta):
                     line_id = int(values['related_to'].split(',')[1])
                     to_update[line_id] = lines[0].id
         super(StatementLine, cls).write(*args)
-        cls.update_move_lines(to_update)
+        if to_update:
+            cls.update_move_lines(to_update)
 
     def update_move_lines(to_update):
         pool = Pool()
