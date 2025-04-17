@@ -1,11 +1,14 @@
 # This file is part of the account_ar module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
+from itertools import groupby
 
 from trytond.model import fields, Workflow
 from trytond.modules.currency.fields import Monetary
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.exceptions import UserError
+from trytond.i18n import gettext
 
 
 class Line(metaclass=PoolMeta):
@@ -35,6 +38,26 @@ class Statement(metaclass=PoolMeta):
         lines = [l for s in statements for l in s.lines
             if isinstance(l.related_to, MoveLine)]
         StatementLine.delete_move(lines)
+
+    @classmethod
+    def validate(cls, statements):
+        super(Statement, cls).validate(statements)
+        for statement in statements:
+            statement.repeated_move_line_related_to()
+
+    def repeated_move_line_related_to(self):
+        # Control if move line is related twice
+        lines = [l for l in self.lines if l.move_line]
+        for key, group in groupby(lines, lambda x: x.move_line):
+            if key is None:
+                continue
+            numbers = []
+            for line in group:
+                numbers.append(line.number)
+            if len(numbers) > 1:
+                raise UserError(gettext(
+                    'account_ar.msg_move_line_already_in_statement',
+                    lines=', '.join(numbers)))
 
 
 class StatementLine(metaclass=PoolMeta):
