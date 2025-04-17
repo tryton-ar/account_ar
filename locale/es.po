@@ -46,6 +46,10 @@ msgctxt "model:ir.message,text:msg_account_company_code_unique"
 msgid "Account code already exists."
 msgstr "El código de la cuenta ya existe."
 
+msgctxt "model:ir.message,text:msg_move_line_already_in_statement"
+msgid "A move line is related to multiple lines: %(lines)s."
+msgstr "Un apunte contable está relacionado con múltiples líneas: %(lines)s."
+
 msgctxt "selection:account.tax.group,afip_kind:"
 msgid "Exento"
 msgstr "Exento"

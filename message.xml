@@ -4,5 +4,8 @@
         <record model="ir.message" id="msg_account_company_code_unique">
             <field name="text">Account code already exists.</field>
         </record>
+        <record model="ir.message" id="msg_move_line_already_in_statement">
+            <field name="text">A move line is related to multiple lines: %(lines)s.</field>
+        </record>
     </data>
 </tryton>
