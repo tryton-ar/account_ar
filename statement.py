@@ -49,8 +49,6 @@ class Statement(metaclass=PoolMeta):
         # Control if move line is related twice
         lines = [l for l in self.lines if l.move_line]
         for key, group in groupby(lines, lambda x: x.move_line):
-            if key is None:
-                continue
             numbers = []
             for line in group:
                 numbers.append(line.number)
