@@ -83,7 +83,7 @@ class StatementLine(metaclass=PoolMeta):
             ('debit', 'ASC'),
             ]
 
-    @fields.depends('amount', 'origin')
+    @fields.depends('amount', 'origin', '_parent_origin.pending_amount')
     def on_change_with_abs_amount(self, name=None):
         return abs(self.amount)
 
@@ -104,7 +104,8 @@ class StatementLine(metaclass=PoolMeta):
     def move_line(self, value):
         self.related_to = value
 
-    @fields.depends('statement', methods=['move_line'])
+    @fields.depends('statement', '_parent_statement.journal',
+        methods=['move_line'])
     def on_change_related_to(self):
         super().on_change_related_to()
         if self.move_line:
