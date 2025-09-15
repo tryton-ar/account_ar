@@ -85,7 +85,8 @@ class StatementLine(metaclass=PoolMeta):
 
     @fields.depends('amount', 'origin', '_parent_origin.pending_amount')
     def on_change_with_abs_amount(self, name=None):
-        return abs(self.amount)
+        if self.amount is not None:
+            return abs(self.amount)
 
     @classmethod
     def _get_relations(cls):
