@@ -4,6 +4,7 @@
 
 from trytond.pool import Pool
 from . import account
+from . import move
 from . import statement
 
 
@@ -13,6 +14,7 @@ def register():
         account.Tax,
         account.TaxGroup,
         account.Account,
+        move.Line,
         module='account_ar', type_='model')
     Pool.register(
         statement.Line,
