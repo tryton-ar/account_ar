@@ -2,6 +2,22 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
+msgctxt "field:account.fiscalyear.balance_deferral.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.fiscalyear.balance_deferral.start,fiscalyear:"
+msgid "Fiscal Year"
+msgstr "Ejercicio fiscal"
+
+msgctxt "field:account.fiscalyear.balance_deferral.start,journal:"
+msgid "Journal"
+msgstr "Diario"
+
+msgctxt "field:account.fiscalyear.balance_deferral.start,period:"
+msgid "Period"
+msgstr "Periodo"
+
 msgctxt "field:account.move.line,related_statement_line:"
 msgid "Statement Line"
 msgstr "Línea de extracto relacionada"
@@ -42,6 +58,14 @@ msgctxt "help:account.tax,perception_tax_code:"
 msgid "Options: iva, gana, suss, iibb, otro"
 msgstr "Opciones: iva, gana, suss, iibb, otro"
 
+msgctxt "model:account.fiscalyear.balance_deferral.start,name:"
+msgid "Balance Deferral"
+msgstr "Crear asiento de cierre"
+
+msgctxt "model:ir.action,name:act_balance_deferral"
+msgid "Balance Deferral"
+msgstr "Crear asiento de cierre"
+
 msgctxt "model:ir.message,text:msg_account_company_code_unique"
 msgid "Account code already exists."
 msgstr "El código de la cuenta ya existe."
@@ -49,6 +73,10 @@ msgstr "El código de la cuenta ya existe."
 msgctxt "model:ir.message,text:msg_move_line_already_in_statement"
 msgid "A move line is related to multiple lines: %(lines)s."
 msgstr "Un apunte contable está relacionado con múltiples líneas: %(lines)s."
+
+msgctxt "model:ir.ui.menu,name:menu_balance_deferral"
+msgid "Balance Deferral"
+msgstr "Crear asiento de cierre"
 
 msgctxt "selection:account.tax.group,afip_kind:"
 msgid "Exento"
@@ -89,3 +117,11 @@ msgstr "Código AFIP"
 msgctxt "view:account.tax:"
 msgid "AFIP Code"
 msgstr "Código AFIP"
+
+msgctxt "wizard_button:account.fiscalyear.balance_deferral,start,balance:"
+msgid "OK"
+msgstr "Aceptar"
+
+msgctxt "wizard_button:account.fiscalyear.balance_deferral,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"

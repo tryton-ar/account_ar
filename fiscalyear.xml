@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+
+<!-- Balance Deferral -->
+
+        <record model="ir.ui.view" id="fiscalyear_balance_deferral_start_view_form">
+            <field name="model">account.fiscalyear.balance_deferral.start</field>
+            <field name="type">form</field>
+            <field name="name">fiscalyear_balance_deferral_start_form</field>
+        </record>
+
+        <record model="ir.action.wizard" id="act_balance_deferral">
+            <field name="name">Balance Deferral</field>
+            <field name="wiz_name">account.fiscalyear.balance_deferral</field>
+        </record>
+        <menuitem action="act_balance_deferral"
+            id="menu_balance_deferral"
+            parent="account.menu_processing" sequence="45"/>
+
+    </data>
+</tryton>
