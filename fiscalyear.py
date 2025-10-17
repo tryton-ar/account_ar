@@ -102,3 +102,115 @@ class BalanceDeferral(Wizard):
         if move:
             action['views'].reverse()
         return action, {'res_id': move.id if move else None}
+
+
+class RestartDeferralStart(ModelView):
+    'Restart Deferral'
+    __name__ = 'account.fiscalyear.restart_deferral.start'
+
+    company = fields.Many2One('company.company', 'Company', required=True)
+    previous_fiscalyear = fields.Many2One('account.fiscalyear',
+        'Previous Fiscal Year', required=True,
+        domain=[('company', '=', Eval('company'))])
+    closing_move = fields.Many2One('account.move', 'Closing Move',
+        required=True, domain=[
+            ('company', '=', Eval('company')),
+            ('period.fiscalyear', '=', Eval('previous_fiscalyear')),
+            ('period.type', '=', 'adjustment'),
+            ('journal.type', '=', 'situation'),
+            ])
+    fiscalyear = fields.Many2One('account.fiscalyear',
+        'New Fiscal Year', required=True,
+        domain=[
+            ('company', '=', Eval('company')),
+            ('state', '=', 'open'),
+            ])
+    journal = fields.Many2One('account.journal', 'Journal', required=True,
+        domain=[('type', '=', 'situation')],
+        context={'company': Eval('company', -1)},
+        depends={'company'})
+    period = fields.Many2One('account.period', 'Period', required=True,
+        domain=[
+            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('type', '=', 'adjustment'),
+            ])
+
+    @classmethod
+    def default_company(cls):
+        return Transaction().context.get('company')
+
+    @classmethod
+    def default_previous_fiscalyear(cls):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+
+        fiscalyears = FiscalYear.search([
+                ('company', '=', cls.default_company() or -1),
+                ],
+            order=[('end_date', 'DESC')], limit=2)
+        if len(fiscalyears) == 2:
+            return fiscalyears[1].id
+
+    @classmethod
+    def default_fiscalyear(cls):
+        pool = Pool()
+        FiscalYear = pool.get('account.fiscalyear')
+
+        fiscalyears = FiscalYear.search([
+                ('company', '=', cls.default_company() or -1),
+                ],
+            order=[('end_date', 'DESC')], limit=1)
+        if len(fiscalyears) == 1:
+            return fiscalyears[0].id
+
+
+class RestartDeferral(Wizard):
+    'Restart Deferral'
+    __name__ = 'account.fiscalyear.restart_deferral'
+
+    start = StateView('account.fiscalyear.restart_deferral.start',
+        'account_ar.fiscalyear_restart_deferral_start_view_form', [
+            Button('Cancel', 'end', 'tryton-cancel'),
+            Button('OK', 'restart', 'tryton-ok', default=True),
+            ])
+    restart = StateAction('account.act_move_form')
+
+    def get_move_lines(self):
+        pool = Pool()
+        Line = pool.get('account.move.line')
+
+        lines = []
+        for closing_line in self.start.closing_move.lines:
+            line = Line()
+            line.account = closing_line.account
+            if closing_line.debit > 0:
+                line.credit = closing_line.debit
+                line.debit = 0
+            else:
+                line.credit = 0
+                line.debit = closing_line.credit
+            lines.append(line)
+        return lines
+
+    def create_move(self):
+        pool = Pool()
+        Move = pool.get('account.move')
+
+        lines = self.get_move_lines()
+        if not lines:
+            return
+        move = Move()
+        move.period = self.start.period
+        move.journal = self.start.journal
+        move.date = self.start.period.start_date
+        move.origin = self.start.fiscalyear
+        move.company = self.start.fiscalyear.company
+        move.lines = lines
+        move.save()
+        return move
+
+    def do_restart(self, action):
+        move = self.create_move()
+        if move:
+            action['views'].reverse()
+        return action, {'res_id': move.id if move else None}
