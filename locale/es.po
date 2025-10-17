@@ -18,6 +18,30 @@ msgctxt "field:account.fiscalyear.balance_deferral.start,period:"
 msgid "Period"
 msgstr "Periodo"
 
+msgctxt "field:account.fiscalyear.restart_deferral.start,closing_move:"
+msgid "Closing Move"
+msgstr "Asiento de cierre"
+
+msgctxt "field:account.fiscalyear.restart_deferral.start,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:account.fiscalyear.restart_deferral.start,fiscalyear:"
+msgid "New Fiscal Year"
+msgstr "Ejercicio fiscal nuevo"
+
+msgctxt "field:account.fiscalyear.restart_deferral.start,journal:"
+msgid "Journal"
+msgstr "Diario"
+
+msgctxt "field:account.fiscalyear.restart_deferral.start,period:"
+msgid "Period"
+msgstr "Periodo"
+
+msgctxt "field:account.fiscalyear.restart_deferral.start,previous_fiscalyear:"
+msgid "Previous Fiscal Year"
+msgstr "Ejercicio fiscal anterior"
+
 msgctxt "field:account.move.line,related_statement_line:"
 msgid "Statement Line"
 msgstr "Línea de extracto relacionada"
@@ -62,9 +86,17 @@ msgctxt "model:account.fiscalyear.balance_deferral.start,name:"
 msgid "Balance Deferral"
 msgstr "Crear asiento de cierre"
 
+msgctxt "model:account.fiscalyear.restart_deferral.start,name:"
+msgid "Restart Deferral"
+msgstr "Crear asiento de apertura"
+
 msgctxt "model:ir.action,name:act_balance_deferral"
 msgid "Balance Deferral"
 msgstr "Crear asiento de cierre"
+
+msgctxt "model:ir.action,name:act_restart_deferral"
+msgid "Restart Deferral"
+msgstr "Crear asiento de apertura"
 
 msgctxt "model:ir.message,text:msg_account_company_code_unique"
 msgid "Account code already exists."
@@ -77,6 +109,10 @@ msgstr "Un apunte contable está relacionado con múltiples líneas: %(lines)s."
 msgctxt "model:ir.ui.menu,name:menu_balance_deferral"
 msgid "Balance Deferral"
 msgstr "Crear asiento de cierre"
+
+msgctxt "model:ir.ui.menu,name:menu_restart_deferral"
+msgid "Restart Deferral"
+msgstr "Crear asiento de apertura"
 
 msgctxt "selection:account.tax.group,afip_kind:"
 msgid "Exento"
@@ -125,3 +161,11 @@ msgstr "Aceptar"
 msgctxt "wizard_button:account.fiscalyear.balance_deferral,start,end:"
 msgid "Cancel"
 msgstr "Cancelar"
+
+msgctxt "wizard_button:account.fiscalyear.restart_deferral,start,end:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "wizard_button:account.fiscalyear.restart_deferral,start,restart:"
+msgid "OK"
+msgstr "Aceptar"

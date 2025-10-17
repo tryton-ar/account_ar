@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<form>
+    <label name="company"/>
+    <field name="company" colspan="3"/>
+    <label name="previous_fiscalyear"/>
+    <field name="previous_fiscalyear"/>
+    <label name="closing_move"/>
+    <field name="closing_move"/>
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
+    <newline/>
+    <label name="journal"/>
+    <field name="journal" widget="selection"/>
+    <label name="period"/>
+    <field name="period"/>
+</form>
