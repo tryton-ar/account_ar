@@ -19,6 +19,7 @@ def register():
         account.Account,
         move.Line,
         fiscalyear.BalanceDeferralStart,
+        fiscalyear.RestartDeferralStart,
         module='account_ar', type_='model')
     Pool.register(
         statement.Line,
@@ -28,4 +29,5 @@ def register():
         depends=['account_statement'])
     Pool.register(
         fiscalyear.BalanceDeferral,
+        fiscalyear.RestartDeferral,
         module='account_ar', type_='wizard')
