@@ -5,6 +5,7 @@
 from trytond.pool import Pool
 from . import account
 from . import move
+from . import fiscalyear
 from . import statement
 
 __all__ = ['register']
@@ -17,6 +18,7 @@ def register():
         account.TaxGroup,
         account.Account,
         move.Line,
+        fiscalyear.BalanceDeferralStart,
         module='account_ar', type_='model')
     Pool.register(
         statement.Line,
@@ -24,3 +26,6 @@ def register():
         statement.StatementLine,
         module='account_ar', type_='model',
         depends=['account_statement'])
+    Pool.register(
+        fiscalyear.BalanceDeferral,
+        module='account_ar', type_='wizard')

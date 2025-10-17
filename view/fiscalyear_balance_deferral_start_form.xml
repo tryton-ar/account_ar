@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<form>
+    <label name="fiscalyear"/>
+    <field name="fiscalyear"/>
+    <newline/>
+    <label name="journal"/>
+    <field name="journal" widget="selection"/>
+    <label name="period"/>
+    <field name="period"/>
+</form>
