@@ -19,7 +19,7 @@ class Line(metaclass=PoolMeta):
 
     @classmethod
     def __setup__(cls):
-        super(Line, cls).__setup__()
+        super().__setup__()
         cls._check_modify_exclude.update(['related_statement_line'])
 
 
@@ -31,9 +31,9 @@ class Statement(metaclass=PoolMeta):
     def validate_statement(cls, statements):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
-        StatementLine = Pool().get('account.statement.line')
+        StatementLine = pool.get('account.statement.line')
 
-        super(Statement, cls).validate_statement(statements)
+        super().validate_statement(statements)
         # Remove created draft moves when line is related to move lines
         lines = [l for s in statements for l in s.lines
             if isinstance(l.related_to, MoveLine)]
@@ -41,7 +41,7 @@ class Statement(metaclass=PoolMeta):
 
     @classmethod
     def validate(cls, statements):
-        super(Statement, cls).validate(statements)
+        super().validate(statements)
         for statement in statements:
             statement.repeated_move_line_related_to()
 
@@ -117,7 +117,7 @@ class StatementLine(metaclass=PoolMeta):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
 
-        lines = super(StatementLine, cls).create(vlist)
+        lines = super().create(vlist)
         to_update = {}
         for line in lines:
             if line.related_to and \
@@ -143,7 +143,7 @@ class StatementLine(metaclass=PoolMeta):
                 elif values['related_to'].split(',')[0] == MoveLine.__name__:
                     line_id = int(values['related_to'].split(',')[1])
                     to_update[line_id] = lines[0].id
-        super(StatementLine, cls).write(*args)
+        super().write(*args)
         if to_update:
             cls.update_move_lines(to_update)
 
