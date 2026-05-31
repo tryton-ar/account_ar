@@ -147,7 +147,8 @@ class StatementLine(metaclass=PoolMeta):
         if to_update:
             cls.update_move_lines(to_update)
 
-    def update_move_lines(to_update):
+    @classmethod
+    def update_move_lines(cls, to_update):
         pool = Pool()
         MoveLine = pool.get('account.move.line')
 
