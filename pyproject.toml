@@ -1,0 +1,60 @@
+[build-system]
+requires = ['hatchling >= 1', 'hatch-tryton']
+build-backend = 'hatchling.build'
+
+[project]
+name = 'trytonar_account_ar'
+dynamic = ['version', 'dependencies', 'optional-dependencies', 'authors', 'readme']
+requires-python = '>=3.10'
+maintainers = [
+    {name = "tryton-ar", email = "info@tryton.org.ar"},
+    ]
+description = "Tryton module for Argentinian accounting"
+license = 'GPL-3.0-or-later'
+license-files = ['LICENSE', 'icons/LICENSE', 'COPYRIGHT']
+keywords = ["tryton", "accounting", "argentina", "chart", "afip", "arca"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Plugins",
+    "Framework :: Tryton",
+    "Topic :: Office/Business",
+    "Topic :: Office/Business :: Financial :: Accounting",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    ]
+
+[project.entry-points.'trytond.modules']
+account = 'trytond.modules.account_ar'
+
+[project.urls]
+homepage = "https://github.com/tryton-ar/account_ar"
+documentation = "https://docs.tryton.org/"
+changelog = "https://github.com/tryton-ar/account_ar/blob/master/CHANGELOG"
+forum = "https://www.tryton.org/forum"
+issues = "https://github.com/tryton-ar/account_ar/issues"
+funding = "https://www.tryton.org/donate"
+
+[tool.hatch.build]
+include = [
+    '**/tryton.cfg',
+    '**/*.py',
+    '**/*.xml',
+    'view/**/*.xml',
+    'locale/**/*.po',
+    '**/*.fodt',
+    'icons/**/*.svg',
+    'tests/**/*.rst',
+    'tests/**/*.json',
+    'tests/**/*.csv',
+    ]
+exclude = ['doc']
+
+[tool.hatch.build.targets.wheel.sources]
+"" = "trytond/modules/account_ar"
+
+[tool.hatch.metadata.hooks.tryton]
+dependencies = []
+copyright = 'COPYRIGHT'
+readme = 'README.rst'
+
+[tool.hatch.metadata.hooks.tryton.tryton-optional-dependencies]
+test = ['proteus']
