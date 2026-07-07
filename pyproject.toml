@@ -1,5 +1,9 @@
 [build-system]
-requires = ['hatchling >= 1', 'hatch-tryton']
+requires = [
+    'hatchling >= 1',
+    'hatch-tryton',
+    'hatch-tryton-ar @ git+https://github.com/tryton-ar/hatch-tryton-ar.git'
+]
 build-backend = 'hatchling.build'
 
 [project]
@@ -56,5 +60,10 @@ dependencies = []
 copyright = 'COPYRIGHT'
 readme = 'README.rst'
 
+[tool.hatch.metadata.hooks.tryton-ar]
+
 [tool.hatch.metadata.hooks.tryton.tryton-optional-dependencies]
 test = ['proteus']
+
+[tool.hatch.metadata]
+allow-direct-references = true
