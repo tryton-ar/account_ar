@@ -27,7 +27,7 @@ class BalanceDeferralStart(ModelView):
         depends={'company'})
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
-            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('fiscalyear', '=', Eval('fiscalyear', -1)),
             ('type', '=', 'adjustment'),
             ])
 
@@ -111,18 +111,18 @@ class RestartDeferralStart(ModelView):
     company = fields.Many2One('company.company', 'Company', required=True)
     previous_fiscalyear = fields.Many2One('account.fiscalyear',
         'Previous Fiscal Year', required=True,
-        domain=[('company', '=', Eval('company'))])
+        domain=[('company', '=', Eval('company', -1))])
     closing_move = fields.Many2One('account.move', 'Closing Move',
         required=True, domain=[
-            ('company', '=', Eval('company')),
-            ('period.fiscalyear', '=', Eval('previous_fiscalyear')),
+            ('company', '=', Eval('company', -1)),
+            ('period.fiscalyear', '=', Eval('previous_fiscalyear', -1)),
             ('period.type', '=', 'adjustment'),
             ('journal.type', '=', 'situation'),
             ])
     fiscalyear = fields.Many2One('account.fiscalyear',
         'New Fiscal Year', required=True,
         domain=[
-            ('company', '=', Eval('company')),
+            ('company', '=', Eval('company', -1)),
             ('state', '=', 'open'),
             ])
     journal = fields.Many2One('account.journal', 'Journal', required=True,
@@ -131,7 +131,7 @@ class RestartDeferralStart(ModelView):
         depends={'company'})
     period = fields.Many2One('account.period', 'Period', required=True,
         domain=[
-            ('fiscalyear', '=', Eval('fiscalyear')),
+            ('fiscalyear', '=', Eval('fiscalyear', -1)),
             ('type', '=', 'adjustment'),
             ])
 
