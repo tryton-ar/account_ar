@@ -1,16 +1,9 @@
 # This file is part of the account_ar module for Tryton.
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
-import os
-import sys
-from pyafipws.wsaa import WSAA
-from pyafipws.wsfev1 import WSFEv1
-from pyafipws.wsfexv1 import WSFEXv1
+
 from proteus import Model
 
-from trytond.modules.company.tests.tools import get_company
-from trytond.modules.party_ar.tests.tools import set_afip_certs
-from trytond.modules.party_ar.afip import PyAfipWsWrapper
 
 __all__ = ['get_tax', ]
 
