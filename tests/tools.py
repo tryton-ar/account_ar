@@ -5,7 +5,7 @@
 from proteus import Model
 
 
-__all__ = ['get_tax', 'get_tax_group']
+__all__ = ['get_tax', 'get_tax_group', 'get_accounts']
 
 
 def get_tax(name='IVA Ventas 21%', config=None):
@@ -70,6 +70,11 @@ def get_accounts(company, config=None):
     accounts['purchase_tax'], = Account.find([
         ('company', '=', company.id),
         ('name', '=', 'IVA crédito fiscal'),
+        ('closed', '!=', True),
+        ], limit=1)
+    accounts['ingresos_brutos_a_pagar'], = Account.find([
+        ('company', '=', company.id),
+        ('name', '=', 'Ingresos brutos a pagar'),
         ('closed', '!=', True),
         ], limit=1)
 
